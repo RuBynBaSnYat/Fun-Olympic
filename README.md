@@ -68,9 +68,12 @@ The project was tested using the XAMPP environment. Apache and MySQL servers wer
 📌 How to Run the Project Locally
 
 a. Install XAMPP and start Apache & MySQL.
+
 b. Place the project folder in C:\xampp\htdocs.
+
 c. Create a database in phpMyAdmin and import the SQL files from the database/ folder.
-d. Configure PHPMailer with your SMTP credentials (if needed).
+
+d. Configure PHPMailer with your SMTP credentials.
 
 Open your browser and go to:
 a. Admin Panel: http://localhost/admin
