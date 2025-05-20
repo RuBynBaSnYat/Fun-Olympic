@@ -66,6 +66,7 @@ Admin controls to block/unblock users
 The project was tested using the XAMPP environment. Apache and MySQL servers were run locally, and phpMyAdmin was used to manage the database. All functionalities like login, video handling, and comment interaction were tested in various user roles.
 
 📌 How to Run the Project Locally
+
 a. Install XAMPP and start Apache & MySQL.
 b. Place the project folder in C:\xampp\htdocs.
 c. Create a database in phpMyAdmin and import the SQL files from the database/ folder.
