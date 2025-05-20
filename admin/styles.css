@@ -1,0 +1,56 @@
+/* Basic styling for admin dashboard */
+.dashboard {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f5f5f5;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.user-management,
+.user-status,
+.graphs,
+.upload-section {
+    margin-bottom: 20px;
+}
+
+.user-management button {
+    margin-right: 10px;
+    padding: 8px 16px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.user-management button:hover {
+    opacity: 0.8;
+}
+
+.user-status ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.upload-section form {
+    margin-top: 10px;
+}
+
+.upload-section input[type="file"] {
+    margin-right: 10px;
+}
+
+.upload-section button {
+    padding: 8px 16px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.upload-section button:hover {
+    opacity: 0.8;
+}
