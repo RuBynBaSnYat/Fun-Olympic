@@ -76,7 +76,9 @@ c. Create a database in phpMyAdmin and import the SQL files from the database/ f
 d. Configure PHPMailer with your SMTP credentials.
 
 Open your browser and go to:
+
 a. Admin Panel: http://localhost/admin
+
 b. User Interface: http://localhost/fun
 
 📈 Future Enhancements
