@@ -1,0 +1,99 @@
+body {
+    background-image: url('h.jpg'); /* Replace 'background.jpg' with your image */
+    background-size: cover;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Drop shadow effect */
+}
+
+h2 {
+    margin-top: 0;
+}
+
+form {
+    background-color: rgba(255, 255, 255, 0.5); /* Semi-transparent white background for form */
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+input[type="text"],
+textarea,
+input[type="file"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+button[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+.folder-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.folder {
+    width: 150px;
+    margin: 10px;
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.5); /* Semi-transparent white background for folders */
+    border-radius: 5px;
+    transition: transform 0.3s ease-in-out;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3); /* Drop shadow effect */
+}
+
+.folder:hover {
+    transform: scale(0.95); /* Decrease size on hover */
+}
+
+.folder img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+.folder h3 {
+    text-align: center;
+    margin-top: 5px;
+}
+
+.folder a {
+    display: block;
+    text-align: center;
+    margin-top: 5px;
+    text-decoration: none;
+    color: #333;
+}
+
+.folder a:hover {
+    color: #666;
+}
