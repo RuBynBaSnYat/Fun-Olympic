@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boxing - Summer Olympics</title>
+    <style>
+       body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        .navbar {
+            background-color: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(10px);
+            padding: 20px 0;
+            text-align: center;
+        }
+        .navbar .container {
+            display: flex;
+            justify-content: space-between; /* Added to align items */
+            align-items: center;
+        }
+        .logo-container {
+            display: flex; /* Added to display logo and heading in the same line */
+            align-items: center;
+        }
+        .logo {
+            width: 100px; /* Adjust the width of the logo as needed */
+        }
+        h2 {
+            color: white;
+            margin: 0;
+            font-size: 24px; /* Adjust font size as needed */
+            margin-left: 10px; /* Adjust margin as needed */
+        }
+        .navbar-links {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .navbar-links a {
+            color: white;
+            text-decoration: none;
+            margin: 0 10px; /* Adjust margin as needed */
+            font-size: 14px; /* Adjust font size as needed */
+            transition: color 0.3s; /* Smooth transition on hover */
+        }
+        .navbar-links a:hover {
+            color: #cccccc; /* Change color on hover */
+        }
+        .back-button {
+            background-color: transparent;
+            border: none;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        h1 {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .section-heading {
+            margin-top: 20px;
+            font-size: 1.2em;
+            text-align: center;
+        }
+        /* Style for athletics list buttons */
+        .boxing-list {
+            list-style-type: none;
+            padding: 0;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        .boxing-list li {
+            margin: 0 10px;
+        }
+        .boxing-list button {
+            background-color: #007bff; /* Blue background color */
+            color: white; /* White text color */
+            border: none; /* Remove button border */
+            padding: 10px 20px; /* Padding for button */
+            border-radius: 5px; /* Rounded corners */
+            cursor: pointer; /* Cursor style */
+            transition: background-color 0.3s; /* Smooth transition on hover */
+            width: 180px; /* Fixed width */
+            height: 60px; /* Fixed height */
+        }
+        .boxing-list button:hover {
+            background-color: #0056b3; /* Darker blue color on hover */
+        }
+        .results-table-container {
+            display: none;
+        }
+        .results-table-container.active {
+            display: block;
+        }
+        .results-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        .results-table th, .results-table td {
+            padding: 8px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+        .results-table th {
+            background-color: #f2f2f2;
+        }
+        .country-flag {
+            width: 24px;
+            height: 16px;
+            margin-right: 5px;
+        }
+
+        /* Responsive styles */
+        @media only screen and (min-width: 768px) {
+            .navbar-links {
+                display: flex;
+            }
+            .logo {
+                width: 150px;
+                margin-left: 0;
+            }
+            h2 {
+                font-size: 20px;
+            }
+            .navbar-links a {
+                font-size: 16px;
+            }
+            h1 {
+                font-size: 36px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="container">
+                <div class="logo-container">
+                    <img src="img/fu.png" alt="Fun Olympics 2024" class="logo">
+                    <h2>Fun Olympics 2024</h2>
+                </div>
+                <div class="navbar-links">
+                    <a href="../Result.html">Home</a>
+                    <a href="basketball.html">Basketball</a>
+                    <a href="ru.html">Athletics</a>
+                    <a href="cycling.html">Cycling</a>
+                    <a href="boxing.html">Boxing</a>
+                    <a href="football.html">Football</a>
+                    <a href="gym.html">Gymnastics</a>
+                    <a href="Swimming.html">Swimming</a>
+                    <a href="tennis.html">Tennis</a>
+                    <a href="volleyball.html">Volleyball</a>>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div class="container">
+            <h1>Boxing - Fun Olympics</h1>
+
+            <!-- List of Boxing Events -->
+            <div class="section-heading">List of Boxing Events</div>
+            <ul class="boxing-list">
+                <li><button onclick="toggleTable('table-mens-flyweight')">Men's Flyweight (52 kg)</button></li>
+                <li><button onclick="toggleTable('table-mens-featherweight')">Men's Featherweight (57 kg)</button></li>
+                <li><button onclick="toggleTable('table-mens-lightweight')">Men's Lightweight (63 kg)</button></li>
+                <li><button onclick="toggleTable('table-mens-welterweight')">Men's Welterweight (69 kg)</button></li>
+                <li><button onclick="toggleTable('table-mens-middleweight')">Men's Middleweight (75 kg)</button></li>
+                <li><button onclick="toggleTable('table-mens-light-heavyweight')">Men's Light Heavyweight (81 kg)</button></li>
+            </ul>
+
+            <!-- Results and Standings for each boxing event -->
+            <!-- Example for Men's Flyweight Results -->
+            <div class="results-table-container" id="table-mens-flyweight">
+    <div class="section-heading">Men's Flyweight (52 kg) Results</div>
+    <table class="results-table">
+        <thead>
+            <tr>
+                <th>Rank</th>
+                <th>Athlete</th>
+                <th>Country</th>
+                <th>Medal</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Add rows for results -->
+            <tr>
+                <td>1st</td>
+                <td>John Doe</td>
+                <td><img src="png/us.png" alt="USA Flag" class="country-flag">USA</td>
+                <td>Gold &#129351;</td>
+            </tr>
+            <tr>
+                <td>2nd</td>
+                <td>Alex Smith</td>
+                <td><img src="png/gb.png" alt="UK Flag" class="country-flag">UK</td>
+                <td>Silver &#129352;</td>
+            </tr>
+            <tr>
+                <td>3rd</td>
+                <td>Mohammed Ali</td>
+                <td><img src="png/eg.png" alt="Egypt Flag" class="country-flag">Egypt</td>
+                <td>Bronze &#129353;</td>
+            </tr>
+            <tr>
+                <td>4th</td>
+                <td>Juan Perez</td>
+                <td><img src="png/mx.png" alt="Mexico Flag" class="country-flag">Mexico</td>
+                <td>-</td>
+            </tr>
+            <tr>
+                <td>5th</td>
+                <td>Mario Rossi</td>
+                <td><img src="png/it.png" alt="Italy Flag" class="country-flag">Italy</td>
+                <td>-</td>
+            </tr>
+            <tr>
+                <td>6th</td>
+                <td>Kazuki Tanaka</td>
+                <td><img src="png/jp.png" alt="Japan Flag" class="country-flag">Japan</td>
+                <td>-</td>
+            </tr>
+            <tr>
+                <td>7th</td>
+                <td>Jose Garcia</td>
+                <td><img src="png/es.png" alt="Spain Flag" class="country-flag">Spain</td>
+                <td>-</td>
+            </tr>
+            <!-- Add more rows as needed -->
+        </tbody>
+    </table>
+    <!-- Add standings table here -->
+</div>
+<div class="results-table-container" id="table-mens-featherweight">
+    <div class="section-heading">Men's Featherweight (57 kg) Results</div>
+    <table class="results-table">
+        <thead>
+            <tr>
+                <th>Rank</th>
+                <th>Athlete</th>
+                <th>Country</th>
+                <th>Medal</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Add rows for results -->
+            <tr>
+                <td>1st</td>
+                <td>Michael Johnson</td>
+                <td><img src="png/gb.png" alt="UK Flag" class="country-flag">UK</td>
+                <td>Gold &#129351;</td>
+            </tr>
+            <tr>
+                <td>2nd</td>
+                <td>Usain Bolt</td>
+                <td><img src="png/jm.png" alt="Jamaica Flag" class="country-flag">Jamaica</td>
+                <td>Silver &#129352;</td>
+            </tr>
+            <tr>
+                <td>3rd</td>
+                <td>Carl Lewis</td>
+                <td><img src="png/us.png" alt="USA Flag" class="country-flag">USA</td>
+                <td>Bronze &#129353;</td>
+            </tr>
+            <tr>
+                <td>4th</td>
+                <td>Mohammed Ali</td>
+                <td><img src="png/eg.png" alt="Egypt Flag" class="country-flag">Egypt</td>
+                <td>-</td>
+            </tr>
+            <tr>
+                <td>5th</td>
+                <td>Juan Perez</td>
+                <td><img src="png/mx.png" alt="Mexico Flag" class="country-flag">Mexico</td>
+                <td>-</td>
+            </tr>
+            <tr>
+                <td>6th</td>
+                <td>Mario Rossi</td>
+                <td><img src="png/it.png" alt="Italy Flag" class="country-flag">Italy</td>
+                <td>-</td>
+            </tr>
+            <tr>
+                <td>7th</td>
+                <td>Kazuki Tanaka</td>
+                <td><img src="png/jp.png" alt="Japan Flag" class="country-flag">Japan</td>
+                <td>-</td>
+            </tr>
+            <!-- Add more rows as needed -->
+        </tbody>
+    </table>
+    <!-- Add standings table here -->
+</div>
+<div class="results-table-container" id="table-mens-lightweight">
+    <div class="section-heading">Men's Lightweight (63 kg) Results</div>
+    <table class="results-table">
+        <thead>
+            <tr>
+                <th>Rank</th>
+                <th>Athlete</th>
+                <th>Country</th>
+                <th>Medal</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Add rows for results -->
+            <tr>
+                <td>1st</td>
+                <td>Rafael Nadal</td>
+                <td><img src="png/es.png" alt="Spain Flag" class="country-flag">Spain</td>
+                <td>Gold &#129351;</td>
+            </tr>
+            <tr>
+                <td>2nd</td>
+                <td>Novak Djokovic</td>
+                <td><img src="png/rs.png" alt="Serbia Flag" class="country-flag">Serbia</td>
+                <td>Silver &#129352;</td>
+            </tr>
+            <tr>
+                <td>3rd</td>
+                <td>Roger Federer</td>
+                <td><img src="png/ch.png" alt="Switzerland Flag" class="country-flag">Switzerland</td>
+                <td>Bronze &#129353;</td>
+            </tr>
+            <tr>
+                <td>4th</td>
+                <td>Andy Murray</td>
+                <td><img src="png/gb.png" alt="UK Flag" class="country-flag">UK</td>
+                <td>-</td>
+            </tr>
+            <tr>
+                <td>5th</td>
+                <td>Juan Martin del Potro</td>
+                <td><img src="png/ar.png" alt="Argentina Flag" class="country-flag">Argentina</td>
+                <td>-</td>
+            </tr>
+            <tr>
+                <td>6th</td>
+                <td>Stefanos Tsitsipas</td>
+                <td><img src="png/gr.png" alt="Greece Flag" class="country-flag">Greece</td>
+                <td>-</td>
+            </tr>
+            <tr>
+                <td>7th</td>
+                <td>Alexander Zverev</td>
+                <td><img src="png/de.png" alt="Germany Flag" class="country-flag">Germany</td>
+                <td>-</td>
+            </tr>
+            <!-- Add more rows as needed -->
+        </tbody>
+    </table>
+    <!-- Add standings table here -->
+</div>
+<div class="results-table-container" id="table-mens-welterweight">
+    <div class="section-heading">Men's Welterweight (69 kg) Results</div>
+    <table class="results-table">
+        <thead>
+            <tr>
+                <th>Rank</th>
+                <th>Athlete</th>
+                <th>Country</th>
+                <th>Medal</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Add rows for results -->
+            <tr>
+                <td>1st</td>
+                <td>Floyd Mayweather Jr.</td>
+                <td><img src="png/us.png" alt="USA Flag" class="country-flag">USA</td>
+                <td>Gold &#129351;</td>
+            </tr>
+            <tr>
+                <td>2nd</td>
+                <td>Manny Pacquiao</td>
+                <td><img src="png/ph.png" alt="Philippines Flag" class="country-flag">Philippines</td>
+                <td>Silver &#129352;</td>
+            </tr>
+            <tr>
+                <td>3rd</td>
+                <td>Errol Spence Jr.</td>
+                <td><img src="png/us.png" alt="USA Flag" class="country-flag">USA</td>
+                <td>Bronze &#129353;</td>
+            </tr>
+            <tr>
+                <td>4th</td>
+                <td>Terence Crawford</td>
+                <td><img src="png/us.png" alt="USA Flag" class="country-flag">USA</td>
+                <td>-</td>
+            </tr>
+            <tr>
+                <td>5th</td>
+                <td>Keith Thurman</td>
+                <td><img src="png/us.png" alt="USA Flag" class="country-flag">USA</td>
+                <td>-</td>
+            </tr>
+            <tr>
+                <td>6th</td>
+                <td>Shawn Porter</td>
+                <td><img src="png/us.png" alt="USA Flag" class="country-flag">USA</td>
+                <td>-</td>
+            </tr>
+            <tr>
+                <td>7th</td>
+                <td>Danny Garcia</td>
+                <td><img src="png/us.png" alt="USA Flag" class="country-flag">USA</td>
+                <td>-</td>
+            </tr>
+            <!-- Add more rows as needed -->
+        </tbody>
+    </table>
+    <!-- Add standings table here -->
+</div>
+<div class="results-table-container" id="table-mens-middleweight">
+    <div class="section-heading">Men's Middleweight (75 kg) Results</div>
+    <table class="results-table">
+        <thead>
+            <tr>
+                <th>Rank</th>
+                <th>Athlete</th>
+                <th>Country</th>
+                <th>Medal</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Add rows for results -->
+            <tr>
+                <td>1st</td>
+                <td>Saadatou Djibril</td>
+                <td><img src="png/cm.png" alt="Cameroon Flag" class="country-flag">Cameroon</td>
+                <td>Gold &#129351;</td>
+            </tr>
+            <tr>
+                <td>2nd</td>
+                <td>Artem Chebotarev</td>
+                <td><img src="png/ru.png" alt="Russia Flag" class="country-flag">Russia</td>
+                <td>Silver &#129352;</td>
+            </tr>
+            <tr>
+                <td>3rd</td>
+                <td>Hebert Sousa</td>
+                <td><img src="png/br.png" alt="Brazil Flag" class="country-flag">Brazil</td>
+                <td>Bronze &#129353;</td>
+            </tr>
+            <tr>
+                <td>4th</td>
+                <td>Gleb Bakshi</td>
+                <td><img src="png/ru.png" alt="Russia Flag" class="country-flag">Russia</td>
+                <td>-</td>
+            </tr>
+            <tr>
+                <td>5th</td>
+                <td>Troy Isley</td>
+                <td><img src="png/us.png" alt="USA Flag" class="country-flag">USA</td>
+                <td>-</td>
+            </tr>
+            <tr>
+                <td>6th</td>
+                <td>Abdelrahman Oraby</td>
+                <td><img src="png/eg.png" alt="Egypt Flag" class="country-flag">Egypt</td>
+                <td>-</td>
+            </tr>
+            <tr>
+                <td>7th</td>
+                <td>Vitali Bandarenka</td>
+                <td><img src="png/by.png" alt="Belarus Flag" class="country-flag">Belarus</td>
+                <td>-</td>
+            </tr>
+            <!-- Add more rows as needed -->
+        </tbody>
+    </table>
+    <!-- Add standings table here -->
+</div>
+<div class="results-table-container" id="table-mens-light-heavyweight">
+    <div class="section-heading">Men's Light Heavyweight (81 kg) Results</div>
+    <table class="results-table">
+        <thead>
+            <tr>
+                <th>Rank</th>
+                <th>Athlete</th>
+                <th>Country</th>
+                <th>Medal</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Add rows for results -->
+            <tr>
+                <td>1st</td>
+                <td>Arlen Lopez</td>
+                <td><img src="png/cu.png" alt="Cuba Flag" class="country-flag">Cuba</td>
+                <td>Gold &#129351;</td>
+            </tr>
+            <tr>
+                <td>2nd</td>
+                <td>Bekzad Nurdauletov</td>
+                <td><img src="png/kz.png" alt="Kazakhstan Flag" class="country-flag">Kazakhstan</td>
+                <td>Silver &#129352;</td>
+            </tr>
+            <tr>
+                <td>3rd</td>
+                <td>Lorenzo Sotomayor Collazo</td>
+                <td><img src="png/az.png" alt="Azerbaijan Flag" class="country-flag">Azerbaijan</td>
+                <td>Bronze &#129353;</td>
+            </tr>
+            <tr>
+                <td>4th</td>
+                <td>Benjamin Whittaker</td>
+                <td><img src="png/gb.png" alt="UK Flag" class="country-flag">UK</td>
+                <td>-</td>
+            </tr>
+            <tr>
+                <td>5th</td>
+                <td>Imre Szello</td>
+                <td><img src="png/hu.png" alt="Hungary Flag" class="country-flag">Hungary</td>
+                <td>-</td>
+            </tr>
+            <tr>
+                <td>6th</td>
+                <td>Abner Teixeira</td>
+                <td><img src="png/br.png" alt="Brazil Flag" class="country-flag">Brazil</td>
+                <td>-</td>
+            </tr>
+            <tr>
+                <td>7th</td>
+                <td>Bayram Malkan</td>
+                <td><img src="png/tr.png" alt="Turkey Flag" class="country-flag">Turkey</td>
+                <td>-</td>
+            </tr>
+            <!-- Add more rows as needed -->
+        </tbody>
+    </table>
+    <!-- Add standings table here -->
+</div>
+
+        </div>
+    </main>
+    <script>
+        function toggleTable(tableId) {
+            // Hide all results-table-container elements except the one with the given tableId
+            var allTables = document.querySelectorAll('.results-table-container');
+            allTables.forEach(function(table) {
+                if (table.id === tableId) {
+                    table.classList.toggle('active');
+                } else {
+                    table.classList.remove('active');
+                }
+            });
+        }
+    </script>
+</body>
+</html>

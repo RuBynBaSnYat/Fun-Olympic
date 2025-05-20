@@ -1,0 +1,108 @@
+/* admin_styles.css */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+.sidebar {
+    width: 250px;
+    height: 100vh;
+    background-color: #333;
+    color: #fff;
+    float: left;
+}
+
+.logo {
+    padding: 20px;
+    text-align: center;
+}
+
+.logo img {
+    width: 50px;
+}
+
+.navigation {
+    margin-top: 20px;
+}
+
+.navigation ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.navigation ul li {
+    padding: 10px;
+    border-bottom: 1px solid #555;
+}
+
+.main-content {
+    margin-left: 250px;
+    padding: 20px;
+}
+
+.user-list table {
+    width: 100%;
+}
+
+.user-list table th, .user-list table td {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.user-list table th {
+    background-color: #555;
+    color: #fff;
+}
+
+.user-list table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.user-list table tr:hover {
+    background-color: #ddd;
+}
+.navigation {
+            margin-top: 20px;
+        }
+
+        .navigation ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .navigation ul li {
+            margin-bottom: 10px;
+        }
+
+        .navigation ul li a {
+            text-decoration: none;
+            color: #333;
+            display: block;
+            padding: 5px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .navigation ul li a:hover {
+            background-color: #f0f0f0;
+        }
+
+        .navigation form {
+            margin-top: 20px;
+        }
+
+        .navigation button {
+            background-color: #f44336;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .navigation button:hover {
+            background-color: #d32f2f;
+        }
+

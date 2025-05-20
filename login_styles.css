@@ -1,0 +1,107 @@
+body, html {
+    height: 100%;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-image: url('img/log.jpg'); /* Add your background image URL here */
+    background-size: cover;
+    background-position: center;
+    color: white;
+}
+
+.nav-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 10px 50px; /* Adjust padding as needed */
+    box-sizing: border-box;
+    z-index: 1000;
+}
+
+.nav-bar img {
+    width: 80px; /* Logo size */
+}
+
+.nav-bar h1 {
+    color: white;
+    margin: 0;
+    font-size: 24px; /* Adjust size as needed */
+}
+
+.nav-links {
+    display: flex;
+    justify-content: space-between;
+    width: 200px; /* Adjust based on actual content */
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px; /* Adjust size as needed */
+    transition: color 0.3s; /* Smooth transition for hover effect */
+}
+
+/* Hover effect for navigation links */
+.nav-links a:hover {
+    color: green; /* Lighter shade on hover */
+}
+
+.main-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    min-height: calc(100vh - 160px); /* Adjust based on nav and footer height */
+    padding-top: 60px; /* To not get hidden behind the nav bar */
+}
+
+.container {
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    padding: 40px;
+    border-radius: 10px;
+    max-width: 300px;
+    margin-left: 700px;
+}
+
+input[type="text"], input[type="password"] {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 5px;
+}
+
+.btn {
+    background-color: #3498db;
+    color: white;
+    padding: 10px 20px;
+    margin: 20px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    border-radius: 5px;
+    transition: background-color 0.3s; /* Smooth transition for hover effect */
+}
+
+/* Hover effect for the button */
+.btn:hover {
+    background-color: green; /* Darker shade on hover */
+}
+
+.forgot {
+    color: greenyellow;
+    transition: color 0.3s; /* Smooth transition for hover effect */
+}
+
+/* Hover effect for forgot password link */
+.forgot:hover {
+    color: red; /* White on hover */
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+}

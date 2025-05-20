@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fun Olympic Sports</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .card {
+            width: 200px;
+            margin: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+        }
+
+        .card img {
+            width: 100%;
+            border-radius: 5px;
+        }
+
+        .navbar,
+        .footer {
+            background-color: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(10px);
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        .navbar .container,
+        .footer .container {
+            display: flex;
+            justify-content: space-between; /* Adjust alignment */
+            align-items: center;
+            padding: 0 20px; /* Add padding to adjust spacing */
+        }
+
+        .logo {
+            width: 50px; /* Adjust the width of the logo as needed */
+        }
+
+        .home-button {
+            background-color: transparent;
+            border: none;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .section-heading {
+            text-align: center;
+            margin-top: 50px;
+
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="container">
+                <div>
+                    <img src="img/fu.png" alt="Fun Olympics 2024" class="logo">
+                    <h2 style="color: white; font-size: 20px; margin: 0 0 0 40px;">Fun Olympics 2024</h2>
+                </div>
+                <div>
+                    <button class="home-button" onclick="goHome()">Home</button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <h2 class="section-heading">Results</h2>
+        <div class="container" id="sportCards">
+            <!-- Sports cards will be dynamically generated here -->
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <img src="img/fu.png" alt="FunOlympics 2024" class="logo">
+            <div class="footer-bar"></div>
+        </div>
+    </footer>
+
+    <script>
+        function goHome() {
+            window.location.href = "../welcome.php"; // Change "index.html" to the actual home page URL
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            const sports = [
+                { name: "Athletics", image: "img/athe.jpg", link: "ru.html" },
+                { name: "Swimming", image: "img/swim.jpg", link: "Swimming.html" },
+                { name: "Gymnastics", image: "img/gym.jpg", link: "gym.html" },
+                { name: "Cycling", image: "img/cycle.jpg", link: "cycling.html" },
+                { name: "Basketball", image: "img/basketball.jpg", link: "basketball.html" },
+                { name: "Football", image: "img/football.jpg", link: "football.html" },
+                { name: "Tennis", image: "img/tennis.jpg", link: "tennis.html" },
+                { name: "Volleyball", image: "img/volley.jpg", link: "volleyball.html" },
+                { name: "Boxing", image: "img/boxing.jpg", link: "boxing.html" },
+              
+            ];
+
+            const sportCardsContainer = document.getElementById("sportCards");
+
+            sports.forEach(sport => {
+                const cardDiv = document.createElement("div");
+                cardDiv.classList.add("card");
+                cardDiv.addEventListener("click", function() {
+                    window.location.href = sport.link;
+                });
+
+                const image = document.createElement("img");
+                image.src = sport.image;
+                image.alt = sport.name;
+
+                const name = document.createElement("p");
+                name.textContent = sport.name;
+
+                cardDiv.appendChild(image);
+                cardDiv.appendChild(name);
+                sportCardsContainer.appendChild(cardDiv);
+            });
+        });
+    </script>
+</body>
+</html>

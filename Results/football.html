@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Football - Fun Olympics</title>
+    <style>
+        /* Add your CSS styles here */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        .navbar {
+            background-color: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(10px);
+            padding: 20px 0;
+            text-align: center;
+        }
+        .navbar .container {
+            display: flex;
+            justify-content: space-between; /* Added to align items */
+            align-items: center;
+        }
+        .logo-container {
+            display: flex; /* Added to display logo and heading in the same line */
+            align-items: center;
+        }
+        .logo {
+            width: 100px; /* Adjust the width of the logo as needed */
+        }
+        h2 {
+            color: white;
+            margin: 0;
+            font-size: 24px; /* Adjust font size as needed */
+            margin-left: 10px; /* Adjust margin as needed */
+        }
+        .navbar-links {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .navbar-links a {
+            color: white;
+            text-decoration: none;
+            margin: 0 10px; /* Adjust margin as needed */
+            font-size: 14px; /* Adjust font size as needed */
+            transition: color 0.3s; /* Smooth transition on hover */
+        }
+        .navbar-links a:hover {
+            color: #cccccc; /* Change color on hover */
+        }
+        .back-button {
+            background-color: transparent;
+            border: none;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        h1 {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .section-heading {
+            margin-top: 20px;
+            font-size: 1.2em;
+            text-align: center;
+        }
+        /* Style for athletics list buttons */
+        .football-list {
+            list-style-type: none;
+            padding: 0;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        .football-list li {
+            margin: 0 10px;
+        }
+        .football-list button {
+            background-color: #007bff; /* Blue background color */
+            color: white; /* White text color */
+            border: none; /* Remove button border */
+            padding: 10px 20px; /* Padding for button */
+            border-radius: 5px; /* Rounded corners */
+            cursor: pointer; /* Cursor style */
+            transition: background-color 0.3s; /* Smooth transition on hover */
+            width: 180px; /* Fixed width */
+            height: 60px; /* Fixed height */
+        }
+        .football-list button:hover {
+            background-color: #0056b3; /* Darker blue color on hover */
+        }
+        .results-table-container {
+            display: none;
+        }
+        .results-table-container.active {
+            display: block;
+        }
+        .results-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        .results-table th, .results-table td {
+            padding: 8px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+        .results-table th {
+            background-color: #f2f2f2;
+        }
+        .country-flag {
+            width: 24px;
+            height: 16px;
+            margin-right: 5px;
+        }
+
+        /* Responsive styles */
+        @media only screen and (min-width: 768px) {
+            .navbar-links {
+                display: flex;
+            }
+            .logo {
+                width: 150px;
+                margin-left: 0;
+            }
+            h2 {
+                font-size: 20px;
+            }
+            .navbar-links a {
+                font-size: 16px;
+            }
+            h1 {
+                font-size: 36px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="container">
+                <div class="logo-container">
+                    <img src="img/fu.png" alt="Fun Olympics 2024" class="logo">
+                    <h2>Fun Olympics 2024</h2>
+                </div>
+                <div class="navbar-links">
+                    <a href="../Result.html">Home</a>
+                    <a href="basketball.html">Basketball</a>
+                    <a href="ru.html">Athletics</a>
+                    <a href="cycling.html">Cycling</a>
+                    <a href="boxing.html">Boxing</a>
+                    <a href="football.html">Football</a>
+                    <a href="gym.html">Gymnastics</a>
+                    <a href="Swimming.html">Swimming</a>
+                    <a href="tennis.html">Tennis</a>
+                    <a href="volleyball.html">Volleyball</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+<main>
+    <div class="container">
+        <h1>Football - Fun Olympics</h1>
+
+        <!-- List of Football Events -->
+        <div class="section-heading">List of Football Events</div>
+        <ul class="football-list">
+            <li><button onclick="toggleTable('table-mens-football')">Men's Football</button></li>
+            <li><button onclick="toggleTable('table-womens-football')">Women's Football</button></li>
+        </ul>
+
+        <!-- Results and Standings for each football event -->
+        <!-- Example for Men's Football Results -->
+        <div class="results-table-container" id="table-mens-football">
+            <div class="section-heading">Men's Football Results</div>
+            <table class="results-table">
+                <thead>
+                <tr>
+                    <th>Rank</th>
+                    <th>Country</th>
+                    <th>Medal</th>
+                </tr>
+                </thead>
+                <tbody>
+                <!-- Add rows for results -->
+                <tr>
+                    <td>1st</td>
+                    <td><img src="png/br.png" alt="Brazil Flag" class="country-flag">Brazil</td>
+                    <td>Gold &#129351;</td>
+                </tr>
+                <tr>
+                    <td>2nd</td>
+                    <td><img src="png/ar.png" alt="Argentina Flag" class="country-flag">Argentina</td>
+                    <td>Silver &#129352;</td>
+                </tr>
+                <tr>
+                    <td>3rd</td>
+                    <td><img src="png/es.png" alt="Spain Flag" class="country-flag">Spain</td>
+                    <td>Bronze &#129353;</td>
+                </tr>
+                <tr>
+                    <td>4th</td>
+                    <td><img src="png/fr.png" alt="France Flag" class="country-flag">France</td>
+                    <td>None</td>
+                </tr>
+                <tr>
+                    <td>5th</td>
+                    <td><img src="png/de.png" alt="Germany Flag" class="country-flag">Germany</td>
+                    <td>None</td>
+                </tr>
+                <tr>
+                    <td>6th</td>
+                    <td><img src="png/it.png" alt="Italy Flag" class="country-flag">Italy</td>
+                    <td>None</td>
+                </tr>
+                <tr>
+                    <td>7th</td>
+                    <td><img src="png/gb.png" alt="UK Flag" class="country-flag">UK</td>
+                    <td>None</td>
+                </tr>
+                <!-- Add more rows as needed -->
+                </tbody>
+            </table>
+            <!-- Add standings table here -->
+        </div>
+
+        <!-- Results and Standings for Women's Football -->
+        <div class="results-table-container" id="table-womens-football">
+            <div class="section-heading">Women's Football Results</div>
+            <table class="results-table">
+                <thead>
+                <tr>
+                    <th>Rank</th>
+                    <th>Country</th>
+                    <th>Medal</th>
+                </tr>
+                </thead>
+                <tbody>
+                <!-- Add rows for results -->
+                <tr>
+                    <td>1st</td>
+                    <td><img src="png/us.png" alt="USA Flag" class="country-flag">USA</td>
+                    <td>Gold &#129351;</td>
+                </tr>
+                <tr>
+                    <td>2nd</td>
+                    <td><img src="png/ca.png" alt="Canada Flag" class="country-flag">Canada</td>
+                    <td>Silver &#129352;</td>
+                </tr>
+                <tr>
+                    <td>3rd</td>
+                    <td><img src="png/se.png" alt="Sweden Flag" class="country-flag">Sweden</td>
+                    <td>Bronze &#129353;</td>
+                </tr>
+                <tr>
+                    <td>4th</td>
+                    <td><img src="png/au.png" alt="Australia Flag" class="country-flag">Australia</td>
+                    <td>None</td>
+                </tr>
+                <tr>
+                    <td>5th</td>
+                    <td><img src="png/gb.png" alt="UK Flag" class="country-flag">UK</td>
+                    <td>None</td>
+                </tr>
+                <tr>
+                    <td>6th</td>
+                    <td><img src="png/br.png" alt="Brazil Flag" class="country-flag">Brazil</td>
+                    <td>None</td>
+                </tr>
+                <tr>
+                    <td>7th</td>
+                    <td><img src="png/jp.png" alt="Japan Flag" class="country-flag">Japan</td>
+                    <td>None</td>
+                </tr>
+                <!-- Add more rows as needed -->
+                </tbody>
+            </table>
+            <!-- Add standings table here -->
+        </div>
+    </div>
+</main>
+<script>
+    function toggleTable(tableId) {
+        // Hide all results-table-container elements except the one with the given tableId
+        var allTables = document.querySelectorAll('.results-table-container');
+        allTables.forEach(function(table) {
+            if (table.id === tableId) {
+                table.classList.toggle('active');
+            } else {
+                table.classList.remove('active');
+            }
+        });
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Swimming - Fun Olympics</title>
+    <style>
+        /* Add your CSS styles here */
+       body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        .navbar {
+            background-color: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(10px);
+            padding: 20px 0;
+            text-align: center;
+        }
+        .navbar .container {
+            display: flex;
+            justify-content: space-between; /* Added to align items */
+            align-items: center;
+        }
+        .logo-container {
+            display: flex; /* Added to display logo and heading in the same line */
+            align-items: center;
+        }
+        .logo {
+            width: 100px; /* Adjust the width of the logo as needed */
+        }
+        h2 {
+            color: white;
+            margin: 0;
+            font-size: 24px; /* Adjust font size as needed */
+            margin-left: 10px; /* Adjust margin as needed */
+        }
+        .navbar-links {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .navbar-links a {
+            color: white;
+            text-decoration: none;
+            margin: 0 10px; /* Adjust margin as needed */
+            font-size: 14px; /* Adjust font size as needed */
+            transition: color 0.3s; /* Smooth transition on hover */
+        }
+        .navbar-links a:hover {
+            color: #cccccc; /* Change color on hover */
+        }
+        .back-button {
+            background-color: transparent;
+            border: none;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        h1 {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .section-heading {
+            margin-top: 20px;
+            font-size: 1.2em;
+            text-align: center;
+        }
+        /* Style for athletics list buttons */
+        .swimming-list {
+            list-style-type: none;
+            padding: 0;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        .swimming-list li {
+            margin: 0 10px;
+        }
+        .swimming-list button {
+            background-color: #007bff; /* Blue background color */
+            color: white; /* White text color */
+            border: none; /* Remove button border */
+            padding: 10px 20px; /* Padding for button */
+            border-radius: 5px; /* Rounded corners */
+            cursor: pointer; /* Cursor style */
+            transition: background-color 0.3s; /* Smooth transition on hover */
+            width: 160px; /* Fixed width */
+            height: 60px; /* Fixed height */
+        }
+        .swimming-list button:hover {
+            background-color: #0056b3; /* Darker blue color on hover */
+        }
+        .results-table-container {
+            display: none;
+        }
+        .results-table-container.active {
+            display: block;
+        }
+        .results-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        .results-table th, .results-table td {
+            padding: 8px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+        .results-table th {
+            background-color: #f2f2f2;
+        }
+        .country-flag {
+            width: 24px;
+            height: 16px;
+            margin-right: 5px;
+        }
+
+        /* Responsive styles */
+        @media only screen and (min-width: 768px) {
+            .navbar-links {
+                display: flex;
+            }
+            .logo {
+                width: 150px;
+                margin-left: 0;
+            }
+            h2 {
+                font-size: 20px;
+            }
+            .navbar-links a {
+                font-size: 16px;
+            }
+            h1 {
+                font-size: 36px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="container">
+                <div class="logo-container">
+                    <img src="img/fu.png" alt="Fun Olympics 2024" class="logo">
+                    <h2>Fun Olympics 2024</h2>
+                </div>
+                <div class="navbar-links">
+                    <a href="../Result.html">Home</a>
+                    <a href="basketball.html">Basketball</a>
+                    <a href="ru.html">Athletics</a>
+                    <a href="cycling.html">Cycling</a>
+                    <a href="boxing.html">Boxing</a>
+                    <a href="football.html">Football</a>
+                    <a href="gym.html">Gymnastics</a>
+                    <a href="Swimming.html">Swimming</a>
+                    <a href="tennis.html">Tennis</a>
+                    <a href="volleyball.html">Volleyball</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div class="container">
+            <h1>Swimming - Summer Olympics</h1>
+
+            <!-- List of Swimming Events -->
+            <div class="section-heading">List of Swimming Events</div>
+            <ul class="swimming-list">
+                <li><button onclick="toggleTable('table-womens-100m-freestyle')">Women's 100m Freestyle</button></li>
+                <!-- Add buttons for other swimming events here -->
+                <li><button onclick="toggleTable('table-mens-200m-butterfly')">Men's 200m Butterfly</button></li>
+                <li><button onclick="toggleTable('table-womens-200m-individual-medley')">Women's 200m Individual Medley</button></li>
+                <li><button onclick="toggleTable('table-mens-4x100m-medley-relay')">Men's 4x100m Medley Relay</button></li>
+            </ul>
+
+            <!-- Results and Standings for each swimming event -->
+            <!-- Example for Women's 100m Freestyle Results -->
+<div class="results-table-container" id="table-womens-100m-freestyle">
+    <div class="section-heading">Women's 100m Freestyle Results</div>
+    <table class="results-table">
+        <thead>
+            <tr>
+                <th>Rank</th>
+                <th>Athlete</th>
+                <th>Country</th>
+                <th>Medal</th>
+                <th>Time</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1st</td>
+                <td>Emma McKeon</td>
+                <td><img src="png/au.png" alt="Australia Flag" class="country-flag">Australia</td>
+                <td>Gold 🥇</td>
+                <td>51.96</td>
+            </tr>
+            <tr>
+                <td>2nd</td>
+                <td>Sarah Sjöström</td>
+                <td><img src="png/se.png" alt="Sweden Flag" class="country-flag">Sweden</td>
+                <td>Silver 🥈</td>
+                <td>52.17</td>
+            </tr>
+            <tr>
+                <td>3rd</td>
+                <td>Siobhan Haughey</td>
+                <td><img src="png/hk.png" alt="Hong Kong Flag" class="country-flag">Hong Kong</td>
+                <td>Bronze 🥉</td>
+                <td>52.27</td>
+            </tr>
+            <tr>
+                <td>4th</td>
+                <td>Penny Oleksiak</td>
+                <td><img src="png/ca.png" alt="Canada Flag" class="country-flag">Canada</td>
+                <td></td>
+                <td>52.59</td>
+            </tr>
+            <tr>
+                <td>5th</td>
+                <td>Cate Campbell</td>
+                <td><img src="png/au.png" alt="Australia Flag" class="country-flag">Australia</td>
+                <td></td>
+                <td>52.77</td>
+            </tr>
+            <tr>
+                <td>6th</td>
+                <td>Abbie Wood</td>
+                <td><img src="png/gb.png" alt="UK Flag" class="country-flag">UK</td>
+                <td></td>
+                <td>52.78</td>
+            </tr>
+            <tr>
+                <td>7th</td>
+                <td>Yufei Zhang</td>
+                <td><img src="png/cn.png" alt="China Flag" class="country-flag">China</td>
+                <td></td>
+                <td>52.79</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div class="results-table-container" id="table-mens-200m-butterfly">
+    <div class="section-heading">Men's 200m Butterfly Results</div>
+    <table class="results-table">
+        <thead>
+            <tr>
+                <th>Rank</th>
+                <th>Athlete</th>
+                <th>Country</th>
+                <th>Medal</th>
+                <th>Time</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1st</td>
+                <td>Michael Phelps</td>
+                <td><img src="png/us.png" alt="USA Flag" class="country-flag">USA</td>
+                <td>Gold &#129351;</td>
+                <td>1:52.03</td>
+            </tr>
+            <tr>
+                <td>2nd</td>
+                <td>Laszlo Cseh</td>
+                <td><img src="png/hu.png" alt="Hungary Flag" class="country-flag">Hungary</td>
+                <td>Silver &#129352;</td>
+                <td>1:52.70</td>
+            </tr>
+            <tr>
+                <td>3rd</td>
+                <td>Chad le Clos</td>
+                <td><img src="png/za.png" alt="South Africa Flag" class="country-flag">South Africa</td>
+                <td>Bronze &#129353;</td>
+                <td>1:52.96</td>
+            </tr>
+            <tr>
+                <td>4th</td>
+                <td>Daiya Seto</td>
+                <td><img src="png/jp.png" alt="Japan Flag" class="country-flag">Japan</td>
+                <td></td>
+                <td>1:53.03</td>
+            </tr>
+            <tr>
+                <td>5th</td>
+                <td>Li Zhuhao</td>
+                <td><img src="png/cn.png" alt="China Flag" class="country-flag">China</td>
+                <td></td>
+                <td>1:53.30</td>
+            </tr>
+            <tr>
+                <td>6th</td>
+                <td>Federico Burdisso</td>
+                <td><img src="png/it.png" alt="Italy Flag" class="country-flag">Italy</td>
+                <td></td>
+                <td>1:53.42</td>
+            </tr>
+            <tr>
+                <td>7th</td>
+                <td>Tamas Kenderesi</td>
+                <td><img src="png/hu.png" alt="Hungary Flag" class="country-flag">Hungary</td>
+                <td></td>
+                <td>1:53.62</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div class="results-table-container" id="table-womens-200m-individual-medley">
+    <div class="section-heading">Women's 200m Individual Medley Results</div>
+    <table class="results-table">
+        <thead>
+            <tr>
+                <th>Rank</th>
+                <th>Athlete</th>
+                <th>Country</th>
+                <th>Medal</th>
+                <th>Time</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1st</td>
+                <td>Katinka Hosszu</td>
+                <td><img src="png/hu.png" alt="Hungary Flag" class="country-flag">Hungary</td>
+                <td>Gold &#129351;</td>
+                <td>2:06.12</td>
+            </tr>
+            <tr>
+                <td>2nd</td>
+                <td>Ye Shiwen</td>
+                <td><img src="png/cn.png" alt="China Flag" class="country-flag">China</td>
+                <td>Silver &#129352;</td>
+                <td>2:06.78</td>
+            </tr>
+            <tr>
+                <td>3rd</td>
+                <td>Siobhan-Marie O'Connor</td>
+                <td><img src="png/gb.png" alt="UK Flag" class="country-flag">UK</td>
+                <td>Bronze &#129353;</td>
+                <td>2:06.88</td>
+            </tr>
+            <tr>
+                <td>4th</td>
+                <td>Mireia Belmonte</td>
+                <td><img src="png/es.png" alt="Spain Flag" class="country-flag">Spain</td>
+                <td></td>
+                <td>2:06.98</td>
+            </tr>
+            <tr>
+                <td>5th</td>
+                <td>Madisyn Cox</td>
+                <td><img src="png/us.png" alt="USA Flag" class="country-flag">USA</td>
+                <td></td>
+                <td>2:07.25</td>
+            </tr>
+            <tr>
+                <td>6th</td>
+                <td>Fantine Lesaffre</td>
+                <td><img src="png/fr.png" alt="France Flag" class="country-flag">France</td>
+                <td></td>
+                <td>2:07.32</td>
+            </tr>
+            <tr>
+                <td>7th</td>
+                <td>Yui Ohashi</td>
+                <td><img src="png/jp.png" alt="Japan Flag" class="country-flag">Japan</td>
+                <td></td>
+                <td>2:07.57</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div class="results-table-container" id="table-mens-4x100m-medley-relay">
+    <div class="section-heading">Men's 4x100m Medley Relay Results</div>
+    <table class="results-table">
+        <thead>
+            <tr>
+                <th>Rank</th>
+                <th>Team</th>
+                <th>Country</th>
+                <th>Medal</th>
+                <th>Time</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1st</td>
+                <td>USA</td>
+                <td><img src="png/us.png" alt="USA Flag" class="country-flag">USA</td>
+                <td>Gold &#129351;</td>
+                <td>3:26.78</td>
+            </tr>
+            <tr>
+                <td>2nd</td>
+                <td>Great Britain</td>
+                <td><img src="png/gb.png" alt="UK Flag" class="country-flag">UK</td>
+                <td>Silver &#129352;</td>
+                <td>3:28.19</td>
+            </tr>
+            <tr>
+                <td>3rd</td>
+                <td>Russia</td>
+                <td><img src="png/ru.png" alt="Russia Flag" class="country-flag">Russia</td>
+                <td>Bronze &#129353;</td>
+                <td>3:28.40</td>
+            </tr>
+            <tr>
+                <td>4th</td>
+                <td>Italy</td>
+                <td><img src="png/it.png" alt="Italy Flag" class="country-flag">Italy</td>
+                <td></td>
+                <td>3:28.72</td>
+            </tr>
+            <tr>
+                <td>5th</td>
+                <td>Japan</td>
+                <td><img src="png/jp.png" alt="Japan Flag" class="country-flag">Japan</td>
+                <td></td>
+                <td>3:29.03</td>
+            </tr>
+            <tr>
+                <td>6th</td>
+                <td>China</td>
+                <td><img src="png/cn.png" alt="China Flag" class="country-flag">China</td>
+                <td></td>
+                <td>3:29.38</td>
+            </tr>
+            <tr>
+                <td>7th</td>
+                <td>France</td>
+                <td><img src="png/fr.png" alt="France Flag" class="country-flag">France</td>
+                <td></td>
+                <td>3:30.08</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+
+            <!-- Results and Standings for other swimming events -->
+            <!-- Add similar containers for other swimming events -->
+
+        </div>
+    </main>
+
+    <script>
+        function toggleTable(tableId) {
+            // Hide all results-table-container elements except the one with the given tableId
+            var allTables = document.querySelectorAll('.results-table-container');
+            allTables.forEach(function(table) {
+                if (table.id === tableId) {
+                    table.classList.toggle('active');
+                } else {
+                    table.classList.remove('active');
+                }
+            });
+        }
+    </script>
+</body>
+</html>

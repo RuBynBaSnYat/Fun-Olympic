@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cycling - Fun Olympics</title>
+    <style>
+        /* Add your CSS styles here */
+            body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        .navbar {
+            background-color: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(10px);
+            padding: 20px 0;
+            text-align: center;
+        }
+        .navbar .container {
+            display: flex;
+            justify-content: space-between; /* Added to align items */
+            align-items: center;
+        }
+        .logo-container {
+            display: flex; /* Added to display logo and heading in the same line */
+            align-items: center;
+        }
+        .logo {
+            width: 100px; /* Adjust the width of the logo as needed */
+        }
+        h2 {
+            color: white;
+            margin: 0;
+            font-size: 24px; /* Adjust font size as needed */
+            margin-left: 10px; /* Adjust margin as needed */
+        }
+        .navbar-links {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .navbar-links a {
+            color: white;
+            text-decoration: none;
+            margin: 0 10px; /* Adjust margin as needed */
+            font-size: 14px; /* Adjust font size as needed */
+            transition: color 0.3s; /* Smooth transition on hover */
+        }
+        .navbar-links a:hover {
+            color: #cccccc; /* Change color on hover */
+        }
+        .back-button {
+            background-color: transparent;
+            border: none;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        h1 {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .section-heading {
+            margin-top: 20px;
+            font-size: 1.2em;
+            text-align: center;
+        }
+        /* Style for athletics list buttons */
+        .cycling-list {
+            list-style-type: none;
+            padding: 0;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .cycling-list li {
+            margin: 0 10px;
+        }
+
+        .cycling-list button {
+            background-color: #007bff; /* Blue background color */
+            color: white; /* White text color */
+            border: none; /* Remove button border */
+            padding: 10px 20px; /* Padding for button */
+            border-radius: 5px; /* Rounded corners */
+            cursor: pointer; /* Cursor style */
+            transition: background-color 0.3s; /* Smooth transition on hover */
+            width: 180px; /* Fixed width */
+            height: 60px; /* Fixed height */
+        }
+
+        .cycling-list button:hover {
+            background-color: #0056b3; /* Darker blue color on hover */
+        }
+
+        .results-table-container {
+            display: none;
+        }
+        .results-table-container.active {
+            display: block;
+        }
+        .results-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        .results-table th, .results-table td {
+            padding: 8px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+        .results-table th {
+            background-color: #f2f2f2;
+        }
+        .country-flag {
+            width: 24px;
+            height: 16px;
+            margin-right: 5px;
+        }
+
+        /* Responsive styles */
+        @media only screen and (min-width: 768px) {
+            .navbar-links {
+                display: flex;
+            }
+            .logo {
+                width: 150px;
+                margin-left: 0;
+            }
+            h2 {
+                font-size: 20px;
+            }
+            .navbar-links a {
+                font-size: 16px;
+            }
+            h1 {
+                font-size: 36px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="container">
+                <div class="logo-container">
+                    <img src="img/fu.png" alt="Fun Olympics 2024" class="logo">
+                    <h2>Fun Olympics 2024</h2>
+                </div>
+                <div class="navbar-links">
+                    <a href="../Result.html">Home</a>
+                    <a href="basketball.html">Basketball</a>
+                    <a href="ru.html">Athletics</a>
+                    <a href="cycling.html">Cycling</a>
+                    <a href="boxing.html">Boxing</a>
+                    <a href="football.html">Football</a>
+                    <a href="gym.html">Gymnastics</a>
+                    <a href="Swimming.html">Swimming</a>
+                    <a href="tennis.html">Tennis</a>
+                    <a href="volleyball.html">Volleyball</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <div class="container">
+            <h1>Cycling -  Olympics</h1>
+
+            <!-- List of Cycling Events -->
+            <div class="section-heading">List of Cycling Events</div>
+            <ul class="cycling-list">
+                <li><button onclick="toggleTable('table-road-race')">Road Race</button></li>
+                <li><button onclick="toggleTable('table-individual-time-trial')">Individual Time Trial</button></li>
+                <li><button onclick="toggleTable('table-track-sprint')">Track Sprint</button></li>
+                <li><button onclick="toggleTable('table-cross-country')">Mountain Bike Cross-country</button></li>
+                <li><button onclick="toggleTable('table-bmx-racing')">BMX Racing</button></li>
+            </ul>
+
+            <!-- Results and Standings for each cycling event -->
+            <!-- Example for Road Race Results -->
+            <div class="results-table-container" id="table-road-race">
+    <div class="section-heading">Road Race Results</div>
+    <table class="results-table">
+        <thead>
+            <tr>
+                <th>Rank</th>
+                <th>Athlete</th>
+                <th>Country</th>
+                <th>Time</th>
+                <th>Medal</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1st</td>
+                <td>John Doe</td>
+                <td><img src="png/us.png" alt="USA Flag" class="country-flag">USA</td>
+                <td>2:35:41</td>
+                <td>Gold 🥇</td>
+            </tr>
+            <tr>
+                <td>2nd</td>
+                <td>Jane Smith</td>
+                <td><img src="png/ca.png" alt="Canada Flag" class="country-flag">Canada</td>
+                <td>2:35:45</td>
+                <td>Silver 🥈</td>
+            </tr>
+            <tr>
+                <td>3rd</td>
+                <td>Michael Johnson</td>
+                <td><img src="png/gb.png" alt="UK Flag" class="country-flag">UK</td>
+                <td>2:35:50</td>
+                <td>Bronze 🥉</td>
+            </tr>
+            <tr>
+                <td>4th</td>
+                <td>Emma Wilson</td>
+                <td><img src="png/au.png" alt="Australia Flag" class="country-flag">Australia</td>
+                <td>2:36:05</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>5th</td>
+                <td>Luca Rossi</td>
+                <td><img src="png/it.png" alt="Italy Flag" class="country-flag">Italy</td>
+                <td>2:36:12</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>6th</td>
+                <td>Sophie Martin</td>
+                <td><img src="png/fr.png" alt="France Flag" class="country-flag">France</td>
+                <td>2:36:20</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>7th</td>
+                <td>Marcus Lee</td>
+                <td><img src="png/de.png" alt="Germany Flag" class="country-flag">Germany</td>
+                <td>2:36:30</td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+    <!-- Add standings table here -->
+</div>
+
+          <div class="results-table-container" id="table-individual-time-trial">
+    <div class="section-heading">Individual Time Trial Results</div>
+    <table class="results-table">
+        <thead>
+            <tr>
+                <th>Rank</th>
+                <th>Athlete</th>
+                <th>Country</th>
+                <th>Time</th>
+                <th>Medal</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1st</td>
+                <td>John Doe</td>
+                <td><img src="png/us.png" alt="USA Flag" class="country-flag">USA</td>
+                <td>45:12</td>
+                <td>Gold 🥇</td>
+            </tr>
+            <tr>
+                <td>2nd</td>
+                <td>Jane Smith</td>
+                <td><img src="png/ca.png" alt="Canada Flag" class="country-flag">Canada</td>
+                <td>45:35</td>
+                <td>Silver 🥈</td>
+            </tr>
+            <tr>
+                <td>3rd</td>
+                <td>Michael Johnson</td>
+                <td><img src="png/gb.png" alt="UK Flag" class="country-flag">UK</td>
+                <td>45:50</td>
+                <td>Bronze 🥉</td>
+            </tr>
+            <tr>
+                <td>4th</td>
+                <td>Emma Wilson</td>
+                <td><img src="png/au.png" alt="Australia Flag" class="country-flag">Australia</td>
+                <td>46:05</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>5th</td>
+                <td>Luca Rossi</td>
+                <td><img src="png/it.png" alt="Italy Flag" class="country-flag">Italy</td>
+                <td>46:12</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>6th</td>
+                <td>Sophie Martin</td>
+                <td><img src="png/fr.png" alt="France Flag" class="country-flag">France</td>
+                <td>46:20</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>7th</td>
+                <td>Marcus Lee</td>
+                <td><img src="png/de.png" alt="Germany Flag" class="country-flag">Germany</td>
+                <td>46:30</td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+    <!-- Add standings table here -->
+</div>
+
+<div class="results-table-container" id="table-track-sprint">
+    <div class="section-heading">Track Sprint Results</div>
+    <table class="results-table">
+        <thead>
+            <tr>
+                <th>Rank</th>
+                <th>Athlete</th>
+                <th>Country</th>
+                <th>Time</th>
+                <th>Medal</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1st</td>
+                <td>John Doe</td>
+                <td><img src="png/us.png" alt="USA Flag" class="country-flag">USA</td>
+                <td>9.81s</td>
+                <td>Gold 🥇</td>
+            </tr>
+            <tr>
+                <td>2nd</td>
+                <td>Jane Smith</td>
+                <td><img src="png/ca.png" alt="Canada Flag" class="country-flag">Canada</td>
+                <td>9.85s</td>
+                <td>Silver 🥈</td>
+            </tr>
+            <tr>
+                <td>3rd</td>
+                <td>Michael Johnson</td>
+                <td><img src="png/gb.png" alt="UK Flag" class="country-flag">UK</td>
+                <td>9.90s</td>
+                <td>Bronze 🥉</td>
+            </tr>
+            <tr>
+                <td>4th</td>
+                <td>Emma Wilson</td>
+                <td><img src="png/au.png" alt="Australia Flag" class="country-flag">Australia</td>
+                <td>9.95s</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>5th</td>
+                <td>Luca Rossi</td>
+                <td><img src="png/it.png" alt="Italy Flag" class="country-flag">Italy</td>
+                <td>10.00s</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>6th</td>
+                <td>Sophie Martin</td>
+                <td><img src="png/fr.png" alt="France Flag" class="country-flag">France</td>
+                <td>10.05s</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>7th</td>
+                <td>Marcus Lee</td>
+                <td><img src="png/de.png" alt="Germany Flag" class="country-flag">Germany</td>
+                <td>10.10s</td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+    <!-- Add standings table here -->
+</div>
+
+            <div class="results-table-container" id="table-cross-country">
+    <div class="section-heading">Mountain Bike Cross-country Results</div>
+    <table class="results-table">
+        <thead>
+            <tr>
+                <th>Rank</th>
+                <th>Athlete</th>
+                <th>Country</th>
+                <th>Time</th>
+                <th>Medal</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1st</td>
+                <td>John Doe</td>
+                <td><img src="png/us.png" alt="USA Flag" class="country-flag">USA</td>
+                <td>1:30:45</td>
+                <td>Gold 🥇</td>
+            </tr>
+            <tr>
+                <td>2nd</td>
+                <td>Jane Smith</td>
+                <td><img src="png/ca.png" alt="Canada Flag" class="country-flag">Canada</td>
+                <td>1:31:20</td>
+                <td>Silver 🥈</td>
+            </tr>
+            <tr>
+                <td>3rd</td>
+                <td>Michael Johnson</td>
+                <td><img src="png/gb.png" alt="UK Flag" class="country-flag">UK</td>
+                <td>1:32:00</td>
+                <td>Bronze 🥉</td>
+            </tr>
+            <tr>
+                <td>4th</td>
+                <td>Emma Wilson</td>
+                <td><img src="png/au.png" alt="Australia Flag" class="country-flag">Australia</td>
+                <td>1:32:30</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>5th</td>
+                <td>Luca Rossi</td>
+                <td><img src="png/it.png" alt="Italy Flag" class="country-flag">Italy</td>
+                <td>1:33:00</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>6th</td>
+                <td>Sophie Martin</td>
+                <td><img src="png/fr.png" alt="France Flag" class="country-flag">France</td>
+                <td>1:33:30</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>7th</td>
+                <td>Marcus Lee</td>
+                <td><img src="png/de.png" alt="Germany Flag" class="country-flag">Germany</td>
+                <td>1:34:00</td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+    <!-- Add standings table here -->
+</div>
+
+
+           <div class="results-table-container" id="table-bmx-racing">
+    <div class="section-heading">BMX Racing Results</div>
+    <table class="results-table">
+        <thead>
+            <tr>
+                <th>Rank</th>
+                <th>Athlete</th>
+                <th>Country</th>
+                <th>Time</th>
+                <th>Medal</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1st</td>
+                <td>John Doe</td>
+                <td><img src="png/us.png" alt="USA Flag" class="country-flag">USA</td>
+                <td>38.20s</td>
+                <td>Gold 🥇</td>
+            </tr>
+            <tr>
+                <td>2nd</td>
+                <td>Jane Smith</td>
+                <td><img src="png/ca.png" alt="Canada Flag" class="country-flag">Canada</td>
+                <td>38.50s</td>
+                <td>Silver 🥈</td>
+            </tr>
+            <tr>
+                <td>3rd</td>
+                <td>Michael Johnson</td>
+                <td><img src="png/gb.png" alt="UK Flag" class="country-flag">UK</td>
+                <td>38.70s</td>
+                <td>Bronze 🥉</td>
+            </tr>
+            <tr>
+                <td>4th</td>
+                <td>Emma Wilson</td>
+                <td><img src="png/au.png" alt="Australia Flag" class="country-flag">Australia</td>
+                <td>38.90s</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>5th</td>
+                <td>Luca Rossi</td>
+                <td><img src="png/it.png" alt="Italy Flag" class="country-flag">Italy</td>
+                <td>39.10s</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>6th</td>
+                <td>Sophie Martin</td>
+                <td><img src="png/fr.png" alt="France Flag" class="country-flag">France</td>
+                <td>39.30s</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>7th</td>
+                <td>Marcus Lee</td>
+                <td><img src="png/de.png" alt="Germany Flag" class="country-flag">Germany</td>
+                <td>39.50s</td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+    <!-- Add standings table here -->
+</div>
+
+        </div>
+    </main>
+    <script>
+        function toggleTable(tableId) {
+            // Hide all results-table-container elements except the one with the given tableId
+            var allTables = document.querySelectorAll('.results-table-container');
+            allTables.forEach(function(table) {
+                if (table.id === tableId) {
+                    table.classList.toggle('active');
+                } else {
+                    table.classList.remove('active');
+                }
+            });
+        }
+    </script>
+</body>
+</html>

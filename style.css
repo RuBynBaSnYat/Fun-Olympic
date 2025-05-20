@@ -1,0 +1,409 @@
+ body {
+            margin: 0;
+            font-family: Arial, sans-serif; /* Ensures consistent font across the website */
+            background-color: whitesmoke; /* Sets the background color */
+            color: white; /* Sets text color to white */
+            background-image: url(BACK.jpg);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding:12 20px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: top 0.3s; /* Add smooth transition for hiding/showing */
+        }
+
+        nav.hidden {
+            top: -60px; /* Move the navigation bar off the screen */
+        }
+
+        nav a {
+            color: White;
+            text-decoration: none;
+            padding: 5px;
+            transition: color 0.3s ease-in-out;
+            padding-left:5px;
+        }
+
+        nav a:hover {
+            color: forestgreen; /* Change color on hover */
+        }
+
+        #homeContent {
+            z-index: 2; /* Ensure the text appears above the video */
+        }
+
+        section {
+            padding: 20px;
+            margin-top: 60px; /* Adds space for the fixed navbar */
+        }
+
+        /* Additional CSS for white text in other elements if necessary */
+        h2, p {
+            color: Black; /* Ensures headings and paragraphs are white */
+        }
+         .btn {
+        padding: 10px 20px;
+        margin: 10px;
+        background-color: gold;
+        color: black;
+        border: none;
+        border-radius: 20px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+    .btn:hover {
+        background-color: darkorange;
+    }
+    .button-container {
+        display: flex;
+        justify-content: center; /* Adjust as needed */
+        align-items: center; /* Adjust as needed */
+    }
+        /* Styles for the News section */
+         #news {
+            padding: 40px;
+            background-color: #1e1e1e;
+            text-align: center;
+        }
+
+        #news h2 {
+            color: #ffdd40;
+            margin-bottom: 20px;
+        }
+
+        #news p {
+            font-size: 18px;
+            line-height: 1.6;
+        }
+
+        #news .news-article {
+            margin-top: 30px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            justify-items: center;
+        }
+
+        #news .article {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        }
+
+        #news .article img {
+            width: 100%;
+            transition: transform 0.3s ease;
+        }
+
+        #news .article:hover img {
+            transform: scale(1.1);
+        }
+
+        #news .article-text {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+
+        #news .article:hover .article-text {
+            transform: translateY(0);
+        }
+
+        #news .article-text h3 {
+            color: #ffdd40;
+            margin-top: 0;
+        }
+
+        #news .article-text p {
+            color: #ccc;
+            font-size: 14px;
+        }
+
+        .read-more {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 8px 16px;
+            background-color: #ffdd40;
+            color: black;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+
+        .read-more:hover {
+            background-color: darkorange;
+        }
+          /* Styles for the Schedule section */
+            /* Styles for the Schedule section */
+                /* Styles for the Schedule section */
+        #schedule {
+            padding: 40px;
+            background-color: #1e1e1e;
+            text-align: center;
+        }
+
+        #schedule h2 {
+            color: #ffdd40;
+            margin-bottom: 20px;
+        }
+
+        #schedule p {
+            font-size: 18px;
+            line-height: 1.6;
+        }
+
+        #schedule .event-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            justify-items: center;
+        }
+
+        #schedule .event {
+            position: relative;
+            background-color: #333333;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            text-align: left;
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+
+        #schedule .event:hover {
+            transform: translateY(-5px);
+        }
+
+        #schedule .event h3 {
+            color: #ffdd40;
+            margin-top: 0;
+        }
+
+        #schedule .event p {
+            color: #ccc;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+        #schedule .event .icon {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 24px;
+            color: #ffdd40;
+        }
+
+        #schedule .details-btn {
+            padding: 10px 20px;
+            background-color: #ffdd40;
+            color: black;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        #schedule .details-btn:hover {
+            background-color: #ffc107;
+        }
+
+        #schedule .button-container {
+            margin-top: 30px;
+        }
+           /* Styles for the Highlights section */
+           #highlights {
+            background-image: url(R.jpg);
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        margin: 20px auto; /* Center the section horizontally */
+        max-width: 1400px; /* Limit the width of the section */
+        display: flex; /* Use flexbox to arrange items */
+        flex-wrap: wrap; /* Allow items to wrap to the next line if needed */
+        justify-content: space-around; /* Distribute items evenly along the main axis */
+    }
+
+    #highlights h2 {
+        color: #333;
+        font-size: 28px; /* Increase font size */
+        margin-bottom: 20px; /* Increase margin */
+        text-align: center; /* Center align the heading */
+        width: 100%; /* Make the heading full width */
+    }
+
+    #highlights p {
+        color: #666;
+        font-size: 16px;
+        line-height: 1.6;
+    }
+
+    .video-container {
+        width: calc(33.33% - 20px); /* Set the width of each video container */
+        margin: 10px; /* Adjust margin */
+    }
+
+    .video-container iframe {
+        width: 100%; /* Full width */
+        height: auto; /* Maintain aspect ratio */
+        margin-bottom: 20px; /* Add some space between videos */
+    }
+      .watch-more-btn {
+        display: block;
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    .watch-more-btn a {
+        display: inline-block;
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px 20px;
+        text-decoration: none;
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
+    }
+
+    .watch-more-btn a:hover {
+        background-color: #45a049;
+    }
+            #about {
+                background-image: url(R.jpg);
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        margin: 20px auto; /* Center the section horizontally */
+        max-width: 1400px; /* Limit the width of the section */
+    }
+
+    #about h2 {
+        color: #140101;
+        font-size: 28px; /* Increase font size */
+        margin-bottom: 20px; /* Increase margin */
+        text-align: center; /* Center align the heading */
+    }
+
+    #about p {
+        color: #666;
+        font-size: 16px;
+        line-height: 1.6;
+        text-align: justify; /* Justify the paragraph */
+    }
+
+    /* Styling for the team member cards */
+    .team-member {
+        background-color: #f9f9f9;
+        border-radius: 8px;
+        padding: 20px;
+        margin-bottom: 10px;
+        max-width: 200px;
+        display: inline-block;
+        text-align: center;
+        position: relative;
+        transition: transform 0.3s ease;
+    }
+
+    .team-member:hover {
+        transform: translateY(-5px);
+    }
+
+    .team-member img {
+        border-radius: 50%;
+        max-width: 100px;
+        margin-bottom: 10px;
+    }
+
+    .team-member h3 {
+        color: #333;
+        font-size: 18px;
+        margin-bottom: 5px;
+    }
+
+    .team-member p {
+        color: #666;
+        font-size: 16px;
+        margin: 0;
+    }
+      #contact {
+        background-image: url(R.jpg);
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        margin: 20px auto; /* Center the section horizontally */
+        max-width: 1400px; /* Limit the width of the section */
+    }
+
+    #contact h2 {
+        color: #333;
+        font-size: 28px; /* Increase font size */
+        margin-bottom: 20px; /* Increase margin */
+        text-align: center; /* Center align the heading */
+    }
+
+    #contact p {
+        color: #666;
+        font-size: 16px;
+        line-height: 1.6;
+        text-align: center; /* Center align the paragraph */
+    }
+
+    .contact-form {
+        max-width: 500px;
+        margin: 0 auto;
+    }
+
+    .contact-form input[type="text"],
+    .contact-form input[type="email"],
+    .contact-form textarea {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-sizing: border-box;
+    }
+
+    .contact-form textarea {
+        height: 100px;
+    }
+
+    .contact-form input[type="submit"] {
+        background-color: #333;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        font-size: 16px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    .contact-form input[type="submit"]:hover {
+        background-color: #555;
+    }
+    footer {
+            text-align: center;
+            padding: 20px;
+        }
+        .footer-text {
+            text-align: center;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+        }

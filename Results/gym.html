@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gymnastics - Fun Olympics</title>
+    <style>
+        /* Add your CSS styles here */
+       body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        .navbar {
+            background-color: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(10px);
+            padding: 20px 0;
+            text-align: center;
+        }
+        .navbar .container {
+            display: flex;
+            justify-content: space-between; /* Added to align items */
+            align-items: center;
+        }
+        .logo-container {
+            display: flex; /* Added to display logo and heading in the same line */
+            align-items: center;
+        }
+        .logo {
+            width: 100px; /* Adjust the width of the logo as needed */
+        }
+        h2 {
+            color: white;
+            margin: 0;
+            font-size: 24px; /* Adjust font size as needed */
+            margin-left: 10px; /* Adjust margin as needed */
+        }
+        .navbar-links {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .navbar-links a {
+            color: white;
+            text-decoration: none;
+            margin: 0 10px; /* Adjust margin as needed */
+            font-size: 14px; /* Adjust font size as needed */
+            transition: color 0.3s; /* Smooth transition on hover */
+        }
+        .navbar-links a:hover {
+            color: #cccccc; /* Change color on hover */
+        }
+        .back-button {
+            background-color: transparent;
+            border: none;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        h1 {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .section-heading {
+            margin-top: 20px;
+            font-size: 1.2em;
+            text-align: center;
+        }
+        /* Style for athletics list buttons */
+        .gymnastics-list {
+            list-style-type: none;
+            padding: 0;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .gymnastics-list li {
+            margin: 0 10px;
+        }
+
+        .gymnastics-list button {
+            background-color: #007bff; /* Blue background color */
+            color: white; /* White text color */
+            border: none; /* Remove button border */
+            padding: 10px 20px; /* Padding for button */
+            border-radius: 5px; /* Rounded corners */
+            cursor: pointer; /* Cursor style */
+            transition: background-color 0.3s; /* Smooth transition on hover */
+            width: 200px; /* Fixed width */
+            height: 60px; /* Fixed height */
+        }
+
+        .gymnastics-list button:hover {
+            background-color: #0056b3; /* Darker blue color on hover */
+        }
+        .results-table-container {
+            display: none;
+        }
+        .results-table-container.active {
+            display: block;
+        }
+        .results-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        .results-table th, .results-table td {
+            padding: 8px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+        .results-table th {
+            background-color: #f2f2f2;
+        }
+        .country-flag {
+            width: 24px;
+            height: 16px;
+            margin-right: 5px;
+        }
+
+        /* Responsive styles */
+        @media only screen and (min-width: 768px) {
+            .navbar-links {
+                display: flex;
+            }
+            .logo {
+                width: 150px;
+                margin-left: 0;
+            }
+            h2 {
+                font-size: 20px;
+            }
+            .navbar-links a {
+                font-size: 16px;
+            }
+            h1 {
+                font-size: 36px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="container">
+                <div class="logo-container">
+                    <img src="img/fu.png" alt="Fun Olympics 2024" class="logo">
+                    <h2>Fun Olympics 2024</h2>
+                </div>
+                <div class="navbar-links">
+                    <a href="../Result.html">Home</a>
+                    <a href="basketball.html">Basketball</a>
+                    <a href="ru.html">Athletics</a>
+                    <a href="cycling.html">Cycling</a>
+                    <a href="boxing.html">Boxing</a>
+                    <a href="football.html">Football</a>
+                    <a href="gym.html">Gymnastics</a>
+                    <a href="Swimming.html">Swimming</a>
+                    <a href="tennis.html">Tennis</a>
+                    <a href="volleyball.html">Volleyball</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+<main>
+    <div class="container">
+        <h1>Gymnastics - Fun Olympics</h1>
+
+        <!-- List of Gymnastics Events -->
+        <div class="section-heading">List of Gymnastics Events</div>
+        <ul class="gymnastics-list">
+            <li><button onclick="toggleTable('table-mens-floor-exercise')">Men's Floor Exercise</button></li>
+            <li><button onclick="toggleTable('table-womens-uneven-bars')">Women's Uneven Bars</button></li>
+            <li><button onclick="toggleTable('table-mens-rings')">Men's Rings</button></li>
+            <li><button onclick="toggleTable('table-womens-balance-beam')">Women's Balance Beam</button></li>
+            <li><button onclick="toggleTable('table-mens-vault')">Men's Vault</button></li>
+        </ul>
+
+        <!-- Results and Standings for each gymnastics event -->
+        <!-- Example for Men's Floor Exercise Results -->
+       <div class="results-table-container" id="table-mens-floor-exercise">
+    <div class="section-heading">Men's Floor Exercise Results</div>
+    <table class="results-table">
+        <thead>
+            <tr>
+                <th>Rank</th>
+                <th>Athlete</th>
+                <th>Country</th>
+                <th>Score</th>
+                <th>Medal</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1st</td>
+                <td>John Smith</td>
+                <td><img src="png/us.png" alt="USA Flag" class="country-flag">USA</td>
+                <td>15.75</td>
+                <td>Gold &#129351;</td>
+            </tr>
+            <tr>
+                <td>2nd</td>
+                <td>Alexander Ivanov</td>
+                <td><img src="png/ru.png" alt="Russia Flag" class="country-flag">Russia</td>
+                <td>15.65</td>
+                <td>Silver &#129352;</td>
+            </tr>
+            <tr>
+                <td>3rd</td>
+                <td>Chen Wei</td>
+                <td><img src="png/cn.png" alt="China Flag" class="country-flag">China</td>
+                <td>15.55</td>
+                <td>Bronze &#129353;</td>
+            </tr>
+            <tr>
+                <td>4th</td>
+                <td>Mario Rossi</td>
+                <td><img src="png/it.png" alt="Italy Flag" class="country-flag">Italy</td>
+                <td>15.45</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>5th</td>
+                <td>Juan Garcia</td>
+                <td><img src="png/es.png" alt="Spain Flag" class="country-flag">Spain</td>
+                <td>15.35</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>6th</td>
+                <td>Kazuki Tanaka</td>
+                <td><img src="png/jp.png" alt="Japan Flag" class="country-flag">Japan</td>
+                <td>15.25</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>7th</td>
+                <td>Mohammed Ali</td>
+                <td><img src="png/eg.png" alt="Egypt Flag" class="country-flag">Egypt</td>
+                <td>15.15</td>
+                <td></td>
+            </tr>
+            <!-- Add more rows if necessary -->
+        </tbody>
+    </table>
+</div>
+
+
+        <!-- Results and Standings for Women's Uneven Bars -->
+       <div class="results-table-container" id="table-womens-uneven-bars">
+    <div class="section-heading">Women's Uneven Bars Results</div>
+    <table class="results-table">
+        <thead>
+            <tr>
+                <th>Rank</th>
+                <th>Athlete</th>
+                <th>Country</th>
+                <th>Score</th>
+                <th>Medal</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1st</td>
+                <td>Emma Johnson</td>
+                <td><img src="png/us.png" alt="USA Flag" class="country-flag">USA</td>
+                <td>15.80</td>
+                <td>Gold &#129351;</td>
+            </tr>
+            <tr>
+                <td>2nd</td>
+                <td>Anastasia Petrova</td>
+                <td><img src="png/ru.png" alt="Russia Flag" class="country-flag">Russia</td>
+                <td>15.70</td>
+                <td>Silver &#129352;</td>
+            </tr>
+            <tr>
+                <td>3rd</td>
+                <td>Liu Wei</td>
+                <td><img src="png/cn.png" alt="China Flag" class="country-flag">China</td>
+                <td>15.60</td>
+                <td>Bronze &#129353;</td>
+            </tr>
+            <tr>
+                <td>4th</td>
+                <td>Giulia Rossi</td>
+                <td><img src="png/it.png" alt="Italy Flag" class="country-flag">Italy</td>
+                <td>15.50</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>5th</td>
+                <td>María García</td>
+                <td><img src="png/es.png" alt="Spain Flag" class="country-flag">Spain</td>
+                <td>15.40</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>6th</td>
+                <td>Sakura Tanaka</td>
+                <td><img src="png/jp.png" alt="Japan Flag" class="country-flag">Japan</td>
+                <td>15.30</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>7th</td>
+                <td>Fatima Mohamed</td>
+                <td><img src="png/eg.png" alt="Egypt Flag" class="country-flag">Egypt</td>
+                <td>15.20</td>
+                <td></td>
+            </tr>
+            <!-- Add more rows if necessary -->
+        </tbody>
+    </table>
+</div>
+
+
+       <div class="results-table-container" id="table-mens-rings">
+    <div class="section-heading">Men's Rings Results</div>
+    <table class="results-table">
+        <thead>
+            <tr>
+                <th>Rank</th>
+                <th>Athlete</th>
+                <th>Country</th>
+                <th>Score</th>
+                <th>Medal</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1st</td>
+                <td>Nikolai Ivanov</td>
+                <td><img src="png/ru.png" alt="Russia Flag" class="country-flag">Russia</td>
+                <td>15.90</td>
+                <td>Gold &#129351;</td>
+            </tr>
+            <tr>
+                <td>2nd</td>
+                <td>David Lee</td>
+                <td><img src="png/us.png" alt="USA Flag" class="country-flag">USA</td>
+                <td>15.80</td>
+                <td>Silver &#129352;</td>
+            </tr>
+            <tr>
+                <td>3rd</td>
+                <td>Li Wei</td>
+                <td><img src="png/cn.png" alt="China Flag" class="country-flag">China</td>
+                <td>15.70</td>
+                <td>Bronze &#129353;</td>
+            </tr>
+            <tr>
+                <td>4th</td>
+                <td>Giovanni Rossi</td>
+                <td><img src="png/it.png" alt="Italy Flag" class="country-flag">Italy</td>
+                <td>15.60</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>5th</td>
+                <td>Antonio García</td>
+                <td><img src="png/es.png" alt="Spain Flag" class="country-flag">Spain</td>
+                <td>15.50</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>6th</td>
+                <td>Yamato Tanaka</td>
+                <td><img src="png/jp.png" alt="Japan Flag" class="country-flag">Japan</td>
+                <td>15.40</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>7th</td>
+                <td>Mohammed Hassan</td>
+                <td><img src="png/eg.png" alt="Egypt Flag" class="country-flag">Egypt</td>
+                <td>15.30</td>
+                <td></td>
+            </tr>
+            <!-- Add more rows if necessary -->
+        </tbody>
+    </table>
+</div>
+
+
+        <!-- Results and Standings for Women's Balance Beam -->
+       <div class="results-table-container" id="table-womens-balance-beam">
+    <div class="section-heading">Women's Balance Beam Results</div>
+    <table class="results-table">
+        <thead>
+            <tr>
+                <th>Rank</th>
+                <th>Athlete</th>
+                <th>Country</th>
+                <th>Score</th>
+                <th>Medal</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1st</td>
+                <td>Olga Petrova</td>
+                <td><img src="png/ru.png" alt="Russia Flag" class="country-flag">Russia</td>
+                <td>15.85</td>
+                <td>Gold &#129351;</td>
+            </tr>
+            <tr>
+                <td>2nd</td>
+                <td>Emily Smith</td>
+                <td><img src="png/us.png" alt="USA Flag" class="country-flag">USA</td>
+                <td>15.75</td>
+                <td>Silver &#129352;</td>
+            </tr>
+            <tr>
+                <td>3rd</td>
+                <td>Li Na</td>
+                <td><img src="png/cn.png" alt="China Flag" class="country-flag">China</td>
+                <td>15.65</td>
+                <td>Bronze &#129353;</td>
+            </tr>
+            <tr>
+                <td>4th</td>
+                <td>Giovanna Rossi</td>
+                <td><img src="png/it.png" alt="Italy Flag" class="country-flag">Italy</td>
+                <td>15.55</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>5th</td>
+                <td>Maria García</td>
+                <td><img src="png/es.png" alt="Spain Flag" class="country-flag">Spain</td>
+                <td>15.45</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>6th</td>
+                <td>Sakura Tanaka</td>
+                <td><img src="png/jp.png" alt="Japan Flag" class="country-flag">Japan</td>
+                <td>15.35</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>7th</td>
+                <td>Fatima Ali</td>
+                <td><img src="png/eg.png" alt="Egypt Flag" class="country-flag">Egypt</td>
+                <td>15.25</td>
+                <td></td>
+            </tr>
+            <!-- Add more rows if necessary -->
+        </tbody>
+    </table>
+</div>
+
+<div class="results-table-container" id="table-mens-vault">
+    <div class="section-heading">Men's Vault Results</div>
+    <table class="results-table">
+        <thead>
+            <tr>
+                <th>Rank</th>
+                <th>Athlete</th>
+                <th>Country</th>
+                <th>Score</th>
+                <th>Medal</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1st</td>
+                <td>Michael Johnson</td>
+                <td><img src="png/us.png" alt="USA Flag" class="country-flag">USA</td>
+                <td>16.00</td>
+                <td>Gold &#129351;</td>
+            </tr>
+            <tr>
+                <td>2nd</td>
+                <td>Alexander Ivanov</td>
+                <td><img src="png/ru.png" alt="Russia Flag" class="country-flag">Russia</td>
+                <td>15.90</td>
+                <td>Silver &#129352;</td>
+            </tr>
+            <tr>
+                <td>3rd</td>
+                <td>Chen Wei</td>
+                <td><img src="png/cn.png" alt="China Flag" class="country-flag">China</td>
+                <td>15.80</td>
+                <td>Bronze &#129353;</td>
+            </tr>
+            <tr>
+                <td>4th</td>
+                <td>Giovanni Rossi</td>
+                <td><img src="png/it.png" alt="Italy Flag" class="country-flag">Italy</td>
+                <td>15.70</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>5th</td>
+                <td>Juan García</td>
+                <td><img src="png/es.png" alt="Spain Flag" class="country-flag">Spain</td>
+                <td>15.60</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>6th</td>
+                <td>Kazuki Tanaka</td>
+                <td><img src="png/jp.png" alt="Japan Flag" class="country-flag">Japan</td>
+                <td>15.50</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>7th</td>
+                <td>Mohammed Ali</td>
+                <td><img src="png/eg.png" alt="Egypt Flag" class="country-flag">Egypt</td>
+                <td>15.40</td>
+                <td></td>
+            </tr>
+            <!-- Add more rows if necessary -->
+        </tbody>
+    </table>
+</div>
+    </div>
+</main>
+<script>
+    function toggleTable(tableId) {
+        // Hide all results-table-container elements except the one with the given tableId
+        var allTables = document.querySelectorAll('.results-table-container');
+        allTables.forEach(function(table) {
+            if (table.id === tableId) {
+                table.classList.toggle('active');
+            } else {
+                table.classList.remove('active');
+            }
+        });
+    }
+</script>
+</body>
+</html>
