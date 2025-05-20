@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tennis - Fun Olympics</title>
+    <style>
+        /* Add your CSS styles here */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        .navbar {
+            background-color: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(10px);
+            padding: 20px 0;
+            text-align: center;
+        }
+        .navbar .container {
+            display: flex;
+            justify-content: space-between; /* Added to align items */
+            align-items: center;
+        }
+        .logo-container {
+            display: flex; /* Added to display logo and heading in the same line */
+            align-items: center;
+        }
+        .logo {
+            width: 100px; /* Adjust the width of the logo as needed */
+        }
+        h2 {
+            color: white;
+            margin: 0;
+            font-size: 24px; /* Adjust font size as needed */
+            margin-left: 10px; /* Adjust margin as needed */
+        }
+        .navbar-links {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .navbar-links a {
+            color: white;
+            text-decoration: none;
+            margin: 0 10px; /* Adjust margin as needed */
+            font-size: 14px; /* Adjust font size as needed */
+            transition: color 0.3s; /* Smooth transition on hover */
+        }
+        .navbar-links a:hover {
+            color: #cccccc; /* Change color on hover */
+        }
+        .back-button {
+            background-color: transparent;
+            border: none;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        h1 {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .section-heading {
+            margin-top: 20px;
+            font-size: 1.2em;
+            text-align: center;
+        }
+        /* Style for athletics list buttons */
+        .athletics-list {
+            list-style-type: none;
+            padding: 0;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        .athletics-list li {
+            margin: 0 10px;
+        }
+        .athletics-list button {
+            background-color: #007bff; /* Blue background color */
+            color: white; /* White text color */
+            border: none; /* Remove button border */
+            padding: 10px 20px; /* Padding for button */
+            border-radius: 5px; /* Rounded corners */
+            cursor: pointer; /* Cursor style */
+            transition: background-color 0.3s; /* Smooth transition on hover */
+            width: 120px; /* Fixed width */
+            height: 60px; /* Fixed height */
+        }
+        .athletics-list button:hover {
+            background-color: #0056b3; /* Darker blue color on hover */
+        }
+        .results-table-container {
+            display: none;
+        }
+        .results-table-container.active {
+            display: block;
+        }
+        .results-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        .results-table th, .results-table td {
+            padding: 8px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+        .results-table th {
+            background-color: #f2f2f2;
+        }
+        .country-flag {
+            width: 24px;
+            height: 16px;
+            margin-right: 5px;
+        }
+
+        /* Responsive styles */
+        @media only screen and (min-width: 768px) {
+            .navbar-links {
+                display: flex;
+            }
+            .logo {
+                width: 150px;
+                margin-left: 0;
+            }
+            h2 {
+                font-size: 20px;
+            }
+            .navbar-links a {
+                font-size: 16px;
+            }
+            h1 {
+                font-size: 36px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="container">
+                <div class="logo-container">
+                    <img src="img/fu.png" alt="Fun Olympics 2024" class="logo">
+                    <h2>Fun Olympics 2024</h2>
+                </div>
+                <div class="navbar-links">
+               <a href="athletics.html">Home</a>
+                    <a href="athletics.html">Home</a>
+                    <a href="basketball.html">Basketball</a>
+                    <a href="ru.html">Athletics</a>
+                    <a href="cycling.html">Cycling</a>
+                    <a href="boxing.html">Boxing</a>
+                    <a href="football.html">Football</a>
+                    <a href="gym.html">Gymnastics</a>
+                    <a href="Swimming.html">Swimming</a>
+                    <a href="tennis.html">Tennis</a>
+                    <a href="volleyball.html">Volleyball</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <div class="container">
+            <h1>Tennis - Summer Olympics</h1>
+
+            <!-- List of Tennis Events -->
+            <div class="section-heading">List of Tennis Events</div>
+            <ul class="athletics-list">
+                <li><button onclick="toggleTable('table-mens-singles')">Men's Singles</button></li>
+                <li><button onclick="toggleTable('table-womens-singles')">Women's Singles</button></li>
+                <li><button onclick="toggleTable('table-mens-doubles')">Men's Doubles</button></li>
+                <li><button onclick="toggleTable('table-womens-doubles')">Women's Doubles</button></li>
+                <li><button onclick="toggleTable('table-mixed-doubles')">Mixed Doubles</button></li>
+            </ul>
+
+            <!-- Results and Standings for each tennis event -->
+            <!-- Example for Men's Singles Results -->
+           <div class="results-table-container" id="table-mens-singles">
+    <div class="section-heading">Men's Singles Results</div>
+    <table class="results-table">
+        <thead>
+            <tr>
+                <th>Rank</th>
+                <th>Athlete</th>
+                <th>Country</th>
+                <th>Medal</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1st</td>
+                <td>Rafael Nadal</td>
+                <td><img src="png/es.png" alt="Spain Flag" class="country-flag">Spain</td>
+                <td>Gold &#129351;</td>
+            </tr>
+            <tr>
+                <td>2nd</td>
+                <td>Roger Federer</td>
+                <td><img src="png/ch.png" alt="Switzerland Flag" class="country-flag">Switzerland</td>
+                <td>Silver &#129352;</td>
+            </tr>
+            <tr>
+                <td>3rd</td>
+                <td>Novak Djokovic</td>
+                <td><img src="png/rs.png" alt="Serbia Flag" class="country-flag">Serbia</td>
+                <td>Bronze &#129353;</td>
+            </tr>
+            <tr>
+                <td>4th</td>
+                <td>Andy Murray</td>
+                <td><img src="png/gb.png" alt="UK Flag" class="country-flag">UK</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>5th</td>
+                <td>Stefanos Tsitsipas</td>
+                <td><img src="png/gr.png" alt="Greece Flag" class="country-flag">Greece</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>6th</td>
+                <td>Dominic Thiem</td>
+                <td><img src="png/at.png" alt="Austria Flag" class="country-flag">Austria</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>7th</td>
+                <td>Daniil Medvedev</td>
+                <td><img src="png/ru.png" alt="Russia Flag" class="country-flag">Russia</td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+    <!-- Add standings table here -->
+</div>
+
+
+            <!-- Results and Standings for Women's Singles -->
+<div class="results-table-container" id="table-womens-singles">
+    <div class="section-heading">Women's Singles Results</div>
+    <table class="results-table">
+        <thead>
+            <tr>
+                <th>Rank</th>
+                <th>Athlete</th>
+                <th>Country</th>
+                <th>Medal</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1st</td>
+                <td>Simona Halep</td>
+                <td><img src="png/ro.png" alt="Romania Flag" class="country-flag">Romania</td>
+                <td>Gold &#129351;</td>
+            </tr>
+            <tr>
+                <td>2nd</td>
+                <td>Naomi Osaka</td>
+                <td><img src="png/jp.png" alt="Japan Flag" class="country-flag">Japan</td>
+                <td>Silver &#129352;</td>
+            </tr>
+            <tr>
+                <td>3rd</td>
+                <td>Ashleigh Barty</td>
+                <td><img src="png/au.png" alt="Australia Flag" class="country-flag">Australia</td>
+                <td>Bronze &#129353;</td>
+            </tr>
+            <tr>
+                <td>4th</td>
+                <td>Aryna Sabalenka</td>
+                <td><img src="png/by.png" alt="Belarus Flag" class="country-flag">Belarus</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>5th</td>
+                <td>Iga Świątek</td>
+                <td><img src="png/pl.png" alt="Poland Flag" class="country-flag">Poland</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>6th</td>
+                <td>Elina Svitolina</td>
+                <td><img src="png/ua.png" alt="Ukraine Flag" class="country-flag">Ukraine</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>7th</td>
+                <td>Karolína Plíšková</td>
+                <td><img src="png/cz.png" alt="Czech Republic Flag" class="country-flag">Czech Republic</td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+    <!-- Add standings table here -->
+</div>
+
+            <!-- Results and Standings for Men's Doubles -->
+<div class="results-table-container" id="table-mens-doubles">
+    <div class="section-heading">Men's Doubles Results</div>
+    <table class="results-table">
+        <thead>
+            <tr>
+                <th>Rank</th>
+                <th>Team</th>
+                <th>Country</th>
+                <th>Medal</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1st</td>
+                <td>Team Spain</td>
+                <td><img src="png/es.png" alt="Spain Flag" class="country-flag">Spain</td>
+                <td>Gold &#129351;</td>
+            </tr>
+            <tr>
+                <td>2nd</td>
+                <td>Team Croatia</td>
+                <td><img src="png/hr.png" alt="Croatia Flag" class="country-flag">Croatia</td>
+                <td>Silver &#129352;</td>
+            </tr>
+            <tr>
+                <td>3rd</td>
+                <td>Team Russia</td>
+                <td><img src="png/ru.png" alt="Russia Flag" class="country-flag">Russia</td>
+                <td>Bronze &#129353;</td>
+            </tr>
+            <tr>
+                <td>4th</td>
+                <td>Team Germany</td>
+                <td><img src="png/de.png" alt="Germany Flag" class="country-flag">Germany</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>5th</td>
+                <td>Team Italy</td>
+                <td><img src="png/it.png" alt="Italy Flag" class="country-flag">Italy</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>6th</td>
+                <td>Team Switzerland</td>
+                <td><img src="png/ch.png" alt="Switzerland Flag" class="country-flag">Switzerland</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>7th</td>
+                <td>Team Australia</td>
+                <td><img src="png/au.png" alt="Australia Flag" class="country-flag">Australia</td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+    <!-- Add standings table here -->
+</div>
+
+            <div class="results-table-container" id="table-womens-doubles">
+    <div class="section-heading">Women's Doubles Results</div>
+    <table class="results-table">
+        <thead>
+            <tr>
+                <th>Rank</th>
+                <th>Team</th>
+                <th>Country</th>
+                <th>Medal</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1st</td>
+                <td>Team USA</td>
+                <td><img src="png/us.png" alt="USA Flag" class="country-flag">USA</td>
+                <td>Gold &#129351;</td>
+            </tr>
+            <tr>
+                <td>2nd</td>
+                <td>Team Russia</td>
+                <td><img src="png/ru.png" alt="Russia Flag" class="country-flag">Russia</td>
+                <td>Silver &#129352;</td>
+            </tr>
+            <tr>
+                <td>3rd</td>
+                <td>Team France</td>
+                <td><img src="png/fr.png" alt="France Flag" class="country-flag">France</td>
+                <td>Bronze &#129353;</td>
+            </tr>
+            <tr>
+                <td>4th</td>
+                <td>Team Spain</td>
+                <td><img src="png/es.png" alt="Spain Flag" class="country-flag">Spain</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>5th</td>
+                <td>Team Australia</td>
+                <td><img src="png/au.png" alt="Australia Flag" class="country-flag">Australia</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>6th</td>
+                <td>Team Canada</td>
+                <td><img src="png/ca.png" alt="Canada Flag" class="country-flag">Canada</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>7th</td>
+                <td>Team Italy</td>
+                <td><img src="png/it.png" alt="Italy Flag" class="country-flag">Italy</td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+    <!-- Add standings table here -->
+</div>
+
+<div class="results-table-container" id="table-mixed-doubles">
+    <div class="section-heading">Mixed Doubles Results</div>
+    <table class="results-table">
+        <thead>
+            <tr>
+                <th>Rank</th>
+                <th>Team</th>
+                <th>Country</th>
+                <th>Medal</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1st</td>
+                <td>Team Switzerland</td>
+                <td><img src="png/ch.png" alt="Switzerland Flag" class="country-flag">Switzerland</td>
+                <td>Gold &#129351;</td>
+            </tr>
+            <tr>
+                <td>2nd</td>
+                <td>Team USA</td>
+                <td><img src="png/us.png" alt="USA Flag" class="country-flag">USA</td>
+                <td>Silver &#129352;</td>
+            </tr>
+            <tr>
+                <td>3rd</td>
+                <td>Team Spain</td>
+                <td><img src="png/es.png" alt="Spain Flag" class="country-flag">Spain</td>
+                <td>Bronze &#129353;</td>
+            </tr>
+            <tr>
+                <td>4th</td>
+                <td>Team Australia</td>
+                <td><img src="png/au.png" alt="Australia Flag" class="country-flag">Australia</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>5th</td>
+                <td>Team Germany</td>
+                <td><img src="png/de.png" alt="Germany Flag" class="country-flag">Germany</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>6th</td>
+                <td>Team Japan</td>
+                <td><img src="png/jp.png" alt="Japan Flag" class="country-flag">Japan</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>7th</td>
+                <td>Team France</td>
+                <td><img src="png/fr.png" alt="France Flag" class="country-flag">France</td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+    <!-- Add standings table here -->
+</div>
+        </div>
+    </main>
+    <script>
+        function toggleTable(tableId) {
+            var allTables = document.querySelectorAll('.results-table-container');
+            allTables.forEach(function(table) {
+                if (table.id === tableId) {
+                    table.classList.toggle('active');
+                } else {
+                    table.classList.remove('active');
+                }
+            });
+        }
+    </script>
+</body>
+</html>

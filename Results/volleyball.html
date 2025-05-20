@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Volleyball - Fun Olympics</title>
+    <style>
+        /* Add your CSS styles here */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        .navbar {
+            background-color: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(10px);
+            padding: 20px 0;
+            text-align: center;
+        }
+        .navbar .container {
+            display: flex;
+            justify-content: space-between; /* Added to align items */
+            align-items: center;
+        }
+        .logo-container {
+            display: flex; /* Added to display logo and heading in the same line */
+            align-items: center;
+        }
+        .logo {
+            width: 100px; /* Adjust the width of the logo as needed */
+        }
+        h2 {
+            color: white;
+            margin: 0;
+            font-size: 24px; /* Adjust font size as needed */
+            margin-left: 10px; /* Adjust margin as needed */
+        }
+        .navbar-links {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .navbar-links a {
+            color: white;
+            text-decoration: none;
+            margin: 0 10px; /* Adjust margin as needed */
+            font-size: 14px; /* Adjust font size as needed */
+            transition: color 0.3s; /* Smooth transition on hover */
+        }
+        .navbar-links a:hover {
+            color: #cccccc; /* Change color on hover */
+        }
+        .back-button {
+            background-color: transparent;
+            border: none;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        h1 {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .section-heading {
+            margin-top: 20px;
+            font-size: 1.2em;
+            text-align: center;
+        }
+        /* Style for athletics list buttons */
+        .volleyball-list {
+            list-style-type: none;
+            padding: 0;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        .volleyball-list li {
+            margin: 0 10px;
+        }
+        .volleyball-list button {
+            background-color: #007bff; /* Blue background color */
+            color: white; /* White text color */
+            border: none; /* Remove button border */
+            padding: 10px 20px; /* Padding for button */
+            border-radius: 5px; /* Rounded corners */
+            cursor: pointer; /* Cursor style */
+            transition: background-color 0.3s; /* Smooth transition on hover */
+            width: 180px; /* Fixed width */
+            height: 60px; /* Fixed height */
+        }
+        .volleyball-list button:hover {
+            background-color: #0056b3; /* Darker blue color on hover */
+        }
+        .results-table-container {
+            display: none;
+        }
+        .results-table-container.active {
+            display: block;
+        }
+        .results-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        .results-table th, .results-table td {
+            padding: 8px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+        .results-table th {
+            background-color: #f2f2f2;
+        }
+        .country-flag {
+            width: 24px;
+            height: 16px;
+            margin-right: 5px;
+        }
+
+        /* Responsive styles */
+        @media only screen and (min-width: 768px) {
+            .navbar-links {
+                display: flex;
+            }
+            .logo {
+                width: 150px;
+                margin-left: 0;
+            }
+            h2 {
+                font-size: 20px;
+            }
+            .navbar-links a {
+                font-size: 16px;
+            }
+            h1 {
+                font-size: 36px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="container">
+                <div class="logo-container">
+                    <img src="img/fu.png" alt="Fun Olympics 2024" class="logo">
+                    <h2>Fun Olympics 2024</h2>
+                </div>
+                <div class="navbar-links">
+                   <a href="athletics.html">Home</a>
+                    <a href="basketball.html">Basketball</a>
+                    <a href="ru.html">Athletics</a>
+                    <a href="cycling.html">Cycling</a>
+                    <a href="boxing.html">Boxing</a>
+                    <a href="football.html">Football</a>
+                    <a href="gym.html">Gymnastics</a>
+                    <a href="Swimming.html">Swimming</a>
+                    <a href="tennis.html">Tennis</a>
+                    <a href="volleyball.html">Volleyball</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div class="container">
+            <h1>Volleyball - Fun Olympics</h1>
+
+            <!-- List of Volleyball Events -->
+            <div class="section-heading">List of Volleyball Events</div>
+            <ul class="volleyball-list">
+                <li><button onclick="toggleTable('table-mens-volleyball')">Men's Volleyball</button></li>
+                <li><button onclick="toggleTable('table-womens-volleyball')">Women's Volleyball</button></li>
+                <!-- Add more buttons for other volleyball events here -->
+            </ul>
+<div class="results-table-container" id="table-mens-volleyball">
+    <div class="section-heading">Men's Volleyball Results</div>
+    <table class="results-table">
+        <thead>
+            <tr>
+                <th>Rank</th>
+                <th>Team</th>
+                <th>Country</th>
+                <th>Medal</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1st</td>
+                <td>Team Brazil</td>
+                <td><img src="png/br.png" alt="Brazil Flag" class="country-flag">Brazil</td>
+                <td>Gold &#129351;</td>
+            </tr>
+            <tr>
+                <td>2nd</td>
+                <td>Team USA</td>
+                <td><img src="png/us.png" alt="USA Flag" class="country-flag">USA</td>
+                <td>Silver &#129352;</td>
+            </tr>
+            <tr>
+                <td>3rd</td>
+                <td>Team Russia</td>
+                <td><img src="png/ru.png" alt="Russia Flag" class="country-flag">Russia</td>
+                <td>Bronze &#129353;</td>
+            </tr>
+            <tr>
+                <td>4th</td>
+                <td>Team Italy</td>
+                <td><img src="png/it.png" alt="Italy Flag" class="country-flag">Italy</td>
+                <td>-</td>
+            </tr>
+            <tr>
+                <td>5th</td>
+                <td>Team Poland</td>
+                <td><img src="png/pl.png" alt="Poland Flag" class="country-flag">Poland</td>
+                <td>-</td>
+            </tr>
+            <tr>
+                <td>6th</td>
+                <td>Team France</td>
+                <td><img src="png/fr.png" alt="France Flag" class="country-flag">France</td>
+                <td>-</td>
+            </tr>
+            <tr>
+                <td>7th</td>
+                <td>Team Argentina</td>
+                <td><img src="png/ar.png" alt="Argentina Flag" class="country-flag">Argentina</td>
+                <td>-</td>
+            </tr>
+        </tbody>
+    </table>
+    <!-- Add standings table here -->
+</div>
+
+<div class="results-table-container" id="table-womens-volleyball">
+    <div class="section-heading">Women's Volleyball Results</div>
+    <table class="results-table">
+        <thead>
+            <tr>
+                <th>Rank</th>
+                <th>Team</th>
+                <th>Country</th>
+                <th>Medal</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1st</td>
+                <td>Team USA</td>
+                <td><img src="png/us.png" alt="USA Flag" class="country-flag">USA</td>
+                <td>Gold &#129351;</td>
+            </tr>
+            <tr>
+                <td>2nd</td>
+                <td>Team China</td>
+                <td><img src="png/cn.png" alt="China Flag" class="country-flag">China</td>
+                <td>Silver &#129352;</td>
+            </tr>
+            <tr>
+                <td>3rd</td>
+                <td>Team Serbia</td>
+                <td><img src="png/rs.png" alt="Serbia Flag" class="country-flag">Serbia</td>
+                <td>Bronze &#129353;</td>
+            </tr>
+            <tr>
+                <td>4th</td>
+                <td>Team Brazil</td>
+                <td><img src="png/br.png" alt="Brazil Flag" class="country-flag">Brazil</td>
+                <td>-</td>
+            </tr>
+            <tr>
+                <td>5th</td>
+                <td>Team Japan</td>
+                <td><img src="png/jp.png" alt="Japan Flag" class="country-flag">Japan</td>
+                <td>-</td>
+            </tr>
+            <tr>
+                <td>6th</td>
+                <td>Team Italy</td>
+                <td><img src="png/it.png" alt="Italy Flag" class="country-flag">Italy</td>
+                <td>-</td>
+            </tr>
+            <tr>
+                <td>7th</td>
+                <td>Team Turkey</td>
+                <td><img src="png/tr.png" alt="Turkey Flag" class="country-flag">Turkey</td>
+                <td>-</td>
+            </tr>
+        </tbody>
+    </table>
+    <!-- Add standings table here -->
+</div>
+
+            <!-- Add more sections for other volleyball events as needed -->
+
+        </div>
+    </main>
+    <script>
+        function toggleTable(tableId) {
+            // Hide all results-table-container elements except the one with the given tableId
+            var allTables = document.querySelectorAll('.results-table-container');
+            allTables.forEach(function(table) {
+                if (table.id === tableId) {
+                    table.classList.toggle('active');
+                } else {
+                    table.classList.remove('active');
+                }
+            });
+        }
+    </script>
+</body>
+</html>
